@@ -137,7 +137,7 @@ box.innerHTML=html}
 function chats(){try{return JSON.parse(localStorage.getItem(KEY+'_chats'))||[]}catch(e){return []}}
 function renderChat(){var area=document.getElementById('chat-area');var a=account();
 if(!a){area.innerHTML='<div class="chatbox"><p>Entra com a tua conta na secção Contratar para conversares com o chefe.</p><p><a class="btn" href="#contratar">Criar conta</a></p></div>';return}
-area.innerHTML='<div class="chatbox"><p>A conversa com o chefe é uma página própria, como o WhatsApp.</p><p><a class="btn" href="chat.html">Abrir conversa →</a></p></div>'}
+area.innerHTML='<div class="chatbox" style="text-align:center"><p><a class="btn" href="chat.html">Abrir conversa →</a></p></div>'}
 function updateEstimate(){var sel=document.getElementById('tipo').value;var sv=DATA.services.find(function(s){return s.name===sel});var p=document.querySelector('[name=pessoas]').value;var el=document.getElementById('estimate');
 if(sv&&p&&Number(p)>0){el.textContent='Estimativa: '+fmt(sv.price*Number(p))+' ('+fmt(sv.price)+' por pessoa)';}else if(sv){el.textContent='Preço: '+fmt(sv.price)+' por pessoa';}else{el.textContent=''}}
 document.getElementById('tipo').addEventListener('change',updateEstimate);
