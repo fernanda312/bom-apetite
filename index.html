@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BOM APETITE — Chefe Meli</title>
+<meta name="description" content="BOM APETITE — Chefe Meli. Cozinha privada em casa, em eventos e em hotéis e restaurantes. Pratos em destaque e como contratar a Chefe Meli.">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Georgia,serif;color:#1c1a17;background:#faf7f2;line-height:1.6}
+a{color:#1c1a17}
+header{position:sticky;top:0;z-index:20;background:#faf7f2;border-bottom:1px solid #e6ddcf}
+.nav{max-width:1100px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.logo{font-size:22px;letter-spacing:2px;font-weight:700;text-decoration:none}
+.navlinks{display:flex;gap:16px;flex-wrap:wrap;font-family:Arial,Helvetica,sans-serif;font-size:14px}
+.navlinks a{text-decoration:none}
+main{max-width:1100px;margin:0 auto;padding:0 20px 60px}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;padding:36px 0 24px}
+.hero img{width:100%;height:auto;display:block;border-radius:16px;object-fit:cover;aspect-ratio:4/5}
+.hero h1{font-size:52px;line-height:1.05;margin:0 0 12px;letter-spacing:1px}
+.hero p{font-size:19px;margin:0 0 22px}
+.btn{display:inline-block;background:#1c1a17;color:#fff;text-decoration:none;padding:14px 24px;border-radius:999px;font-family:Arial,Helvetica,sans-serif;font-size:15px;border:0;cursor:pointer}
+.btn.light{background:#fff;color:#1c1a17;border:1px solid #1c1a17}
+section{padding:36px 0;border-top:1px solid #e6ddcf}
+h2{font-size:32px;line-height:1.2;margin:0 0 10px}
+.lead{font-size:18px;max-width:760px;margin:0 0 24px}
+.marquee{overflow:hidden}
+.track{display:flex;gap:16px;width:max-content;animation:scroll 46s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.dish{width:260px;flex:0 0 260px;background:#fff;border-radius:14px;overflow:hidden;border:1px solid #ece4d6}
+.dish img{width:100%;height:300px;object-fit:cover;display:block}
+.dish p{margin:0;padding:12px 14px;font-family:Arial,Helvetica,sans-serif;font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:#fff;border:1px solid #ece4d6;border-radius:14px;overflow:hidden}
+.card img{width:100%;height:280px;object-fit:cover;display:block}
+.card .pad{padding:16px 18px}
+.card h3{margin:0 0 6px;font-size:21px}
+.card p{margin:0;font-family:Arial,Helvetica,sans-serif;font-size:15px}
+.videos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.videos video{width:100%;height:auto;display:block;border-radius:14px;background:#000}
+.black{background:linear-gradient(180deg,#000,#1e1a17 50%,#000);color:#fff;border-radius:16px;padding:32px 20px;text-align:center}
+.black h2{color:#fff}
+.black img{width:100%;max-width:520px;height:auto;display:block;margin:16px auto 0;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 10%,#000 90%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 10%,#000 90%,transparent 100%)}
+.black p{color:#e8e0d4;max-width:640px;margin:0 auto}
+form{max-width:640px}
+label{display:block;font-family:Arial,Helvetica,sans-serif;font-size:14px;margin:14px 0 4px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #d8cdbb;border-radius:10px;font-size:16px;font-family:Arial,Helvetica,sans-serif;background:#fff}
+textarea{min-height:110px}
+#pedido{white-space:pre-wrap;background:#fff;border:1px solid #ece4d6;border-radius:12px;padding:16px;margin-top:18px;display:none;font-family:Arial,Helvetica,sans-serif;font-size:15px}
+footer{max-width:1100px;margin:0 auto;padding:24px 20px 40px;text-align:center;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#6b6156}
+@media(max-width:800px){
+.hero{grid-template-columns:1fr;padding-top:24px}
+.hero h1{font-size:40px}
+h2{font-size:27px}
+.grid{grid-template-columns:1fr}
+.videos{grid-template-columns:1fr}
+.dish{width:220px;flex-basis:220px}
+.dish img{height:260px}
+.card img{height:300px}
+.nav{padding:12px 16px}
+main{padding:0 16px 48px}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="nav">
+<a class="logo" href="#inicio">BOM APETITE</a>
+<nav class="navlinks">
+<a href="#pratos">Pratos</a>
+<a href="#chefe">A Chefe</a>
+<a href="#servicos">Serviços</a>
+<a href="#videos">Vídeos</a>
+<a href="#contratar">Contratar</a>
+</nav>
+</div>
+</header>
+<main>
+<section id="inicio" style="border-top:0">
+<div class="hero">
+<div>
+<h1>BOM APETITE</h1>
+<p>Comida feita com cuidado, sabor e apresentação. A Chefe Meli cozinha para ti, na tua casa, no teu evento ou na tua cozinha profissional.</p>
+<p><a class="btn" href="#contratar">Contratar a Chefe Meli</a> &nbsp; <a class="btn light" href="#pratos">Ver os pratos</a></p>
+</div>
+<img src="media/hero-meli.jpg" alt="Chefe Meli, de uniforme branco, de braços cruzados na cozinha">
+</div>
+</section>
+
+<section id="pratos">
+<h2>Pratos em destaque</h2>
+<p class="lead">Estes pratos passam em scroll automático. São pratos da Chefe Meli, em destaque, um a um.</p>
+<div class="marquee" aria-label="Pratos em scroll automático">
+<div class="track">
+<div class="dish"><img src="media/prato-caranguejo.jpg" alt="Caranguejo"><p>Caranguejo</p></div>
+<div class="dish"><img src="media/prato-bife-cogumelos.jpg" alt="Bife com cogumelos"><p>Bife com cogumelos</p></div>
+<div class="dish"><img src="media/prato-carne-preto.jpg" alt="Carne em prato preto"><p>Carne em prato preto</p></div>
+<div class="dish"><img src="media/prato-molho.jpg" alt="Prato com molho"><p>Prato com molho</p></div>
+<div class="dish"><img src="media/prato-frito.jpg" alt="Prato frito com rebentos"><p>Prato frito com rebentos</p></div>
+<div class="dish"><img src="media/prato-massa.jpg" alt="Massa"><p>Massa</p></div>
+<div class="dish"><img src="media/prato-peixe.jpg" alt="Peixe"><p>Peixe</p></div>
+<div class="dish"><img src="media/prato-sushi.jpg" alt="Sushi"><p>Sushi</p></div>
+<div class="dish"><img src="media/prato-caranguejo.jpg" alt="Caranguejo"><p>Caranguejo</p></div>
+<div class="dish"><img src="media/prato-bife-cogumelos.jpg" alt="Bife com cogumelos"><p>Bife com cogumelos</p></div>
+<div class="dish"><img src="media/prato-carne-preto.jpg" alt="Carne em prato preto"><p>Carne em prato preto</p></div>
+<div class="dish"><img src="media/prato-molho.jpg" alt="Prato com molho"><p>Prato com molho</p></div>
+<div class="dish"><img src="media/prato-frito.jpg" alt="Prato frito com rebentos"><p>Prato frito com rebentos</p></div>
+<div class="dish"><img src="media/prato-massa.jpg" alt="Massa"><p>Massa</p></div>
+<div class="dish"><img src="media/prato-peixe.jpg" alt="Peixe"><p>Peixe</p></div>
+<div class="dish"><img src="media/prato-sushi.jpg" alt="Sushi"><p>Sushi</p></div>
+</div>
+</div>
+</section>
+
+<section id="chefe">
+<h2>A Chefe Meli</h2>
+<p class="lead">A Chefe Meli é o centro deste site. É o trabalho dela que está nas fotos, nos vídeos e em cada prato. Ela cozinha com técnica, com fogo, com tempero e com apresentação cuidada, do início ao empratamento.</p>
+<div class="grid">
+<div class="card"><img src="media/meli-flambe.jpg" alt="Chefe Meli a cozinhar com fogo"><div class="pad"><h3>Na cozinha, a sério</h3><p>Fogo, panela e tempero, no ritmo de uma cozinha profissional.</p></div></div>
+<div class="card"><img src="media/meli-cozinha.jpg" alt="Chefe Meli a mexer uma panela"><div class="pad"><h3>O trabalho dela</h3><p>Cozinhar, provar, ajustar e servir. Cada prato passa pelas mãos dela.</p></div></div>
+<div class="card"><img src="media/meli-restaurante.jpg" alt="Chefe Meli num restaurante"><div class="pad"><h3>Em restaurantes</h3><p>Experiência em sala e em cozinha de restaurante, com serviço completo.</p></div></div>
+<div class="card"><img src="media/meli-empratar.jpg" alt="Chefe Meli a empratar"><div class="pad"><h3>Do fogão ao prato</h3><p>Empratamento cuidado, com o prato final a ser o centro da mesa.</p></div></div>
+<div class="card"><img src="media/meli-temperar.jpg" alt="Chefe Meli a temperar pratos"><div class="pad"><h3>Tempero final</h3><p>O último toque antes de servir, com especiarias e ervas frescas.</p></div></div>
+<div class="card"><img src="media/meli-moon.jpg" alt="Chefe Meli num evento de restaurante"><div class="pad"><h3>Em eventos</h3><p>Presença em eventos e em casas de restauração, com a equipa e o serviço a acompanhar.</p></div></div>
+</div>
+</section>
+
+<section id="servicos">
+<h2>Que tipo de trabalho ela faz</h2>
+<p class="lead">A Chefe Meli pode ser contratada para cozinhar onde tu precisas. Estes são os tipos de trabalho que ela faz.</p>
+<div class="grid">
+<div class="card"><div class="pad"><h3>Chefe em casa</h3><p>Jantares em casa, almoços de família e refeições à medida, cozinhados na tua cozinha.</p></div></div>
+<div class="card"><div class="pad"><h3>Chefe de eventos</h3><p>Eventos, festas e ocasiões especiais, com menu pensado para o número de pessoas e o momento.</p></div></div>
+<div class="card"><div class="pad"><h3>Hotéis e restaurantes</h3><p>Trabalho em cozinhas de hotel e de restaurante, com serviço profissional e apresentação cuidada.</p></div></div>
+<div class="card"><div class="pad"><h3>Menus e bebidas</h3><p>Menus completos, com entradas, pratos principais, sobremesas e bebidas a acompanhar.</p></div></div>
+</div>
+<h2 style="margin-top:36px">Mais pratos em destaque</h2>
+<p class="lead">Todos os pratos que foram enviados estão aqui, bem apresentados, sem cortes e sem zoom.</p>
+<div class="grid">
+<div class="card"><img src="media/prato-cordeiro.jpg" alt="Cordeiro com vinho"><div class="pad"><h3>Cordeiro</h3><p>Cordeiro grelhado, servido com acompanhamento e vinho.</p></div></div>
+<div class="card"><img src="media/sobremesa-chocolate.jpg" alt="Sobremesa de chocolate"><div class="pad"><h3>Sobremesa de chocolate</h3><p>Chocolate, fruta e folha de ouro, para fechar a refeição.</p></div></div>
+<div class="card"><img src="media/prato-salmao.jpg" alt="Salmão com limão"><div class="pad"><h3>Salmão</h3><p>Salmão com limão e alecrim, grelhado e suculento.</p></div></div>
+<div class="card"><img src="media/prato-grelhado.jpg" alt="Carne grelhada"><div class="pad"><h3>Carne grelhada</h3><p>Carne grelhada com batatas, tomate e pimento.</p></div></div>
+<div class="card"><img src="media/prato-bife-pure.jpg" alt="Bife com puré"><div class="pad"><h3>Bife com puré</h3><p>Bife com puré, tomate e molho, em prato de serviço.</p></div></div>
+<div class="card"><img src="media/prato-massa-parmesao.jpg" alt="Massa com parmesão"><div class="pad"><h3>Massa com parmesão</h3><p>Massa fresca com parmesão ralado na hora.</p></div></div>
+<div class="card"><img src="media/bebida-coquetel.jpg" alt="Coquetel"><div class="pad"><h3>Coquetéis</h3><p>Bebidas e coquetéis para acompanhar o menu.</p></div></div>
+<div class="card"><img src="media/menu-coquetel.jpg" alt="Menu com coquetel"><div class="pad"><h3>O menu</h3><p>Um menu pensado do início ao fim, com a bebida certa para cada prato.</p></div></div>
+</div>
+</section>
+
+<section id="videos">
+<h2>Vídeos</h2>
+<p class="lead">O trabalho da Chefe Meli em vídeo: o tempero, o sal e o cuidado no prato.</p>
+<div class="videos">
+<video src="media/video-bife.mp4" controls muted loop playsinline preload="metadata"></video>
+<video src="media/video-sal.mp4" controls muted loop playsinline preload="metadata"></video>
+</div>
+</section>
+
+<section>
+<div class="black">
+<h2>BOM APETITE</h2>
+<p>A mulher da foto, em fundo preto em degradê. Bom apetite, com a Chefe Meli.</p>
+<img src="media/bon-apetite.jpg" alt="Chefe com faca, em fundo preto em degradê">
+</div>
+</section>
+
+<section id="contratar">
+<h2>Como contratar a Chefe Meli</h2>
+<p class="lead">1. Diz a data e o número de pessoas. 2. Escolhe o tipo de serviço: em casa, evento, hotel ou restaurante. 3. A Chefe Meli propõe o menu e cozinha para ti.</p>
+<form id="form-contratar">
+<label for="nome">O teu nome</label>
+<input id="nome" name="nome" required>
+<label for="data">Data</label>
+<input id="data" name="data" type="date">
+<label for="pessoas">Número de pessoas</label>
+<input id="pessoas" name="pessoas" type="number" min="1">
+<label for="tipo">Tipo de serviço</label>
+<select id="tipo" name="tipo">
+<option>Chefe em casa</option>
+<option>Chefe de eventos</option>
+<option>Hotel ou restaurante</option>
+<option>Menu à medida</option>
+</select>
+<label for="mensagem">Mensagem</label>
+<textarea id="mensagem" name="mensagem" placeholder="Ex.: jantar em casa, 10 pessoas, com peixe e sobremesa de chocolate"></textarea>
+<p><button class="btn" type="submit">Preparar o meu pedido</button></p>
+</form>
+<div id="pedido"></div>
+<p style="font-family:Arial,Helvetica,sans-serif;font-size:15px">Preenche o pedido acima e copia o texto para enviar à Chefe Meli. O contacto direto dela ainda não está neste site — diz-me o número ou o WhatsApp dela e eu coloco o botão direto aqui.</p>
+</section>
+</main>
+<footer>BOM APETITE — Chefe Meli · Todos os pratos e fotos são da Chefe Meli.</footer>
+<script>
+document.getElementById('form-contratar').addEventListener('submit',function(e){
+e.preventDefault();
+var t='Pedido para a Chefe Meli — BOM APETITE\nNome: '+document.getElementById('nome').value+'\nData: '+document.getElementById('data').value+'\nPessoas: '+document.getElementById('pessoas').value+'\nServiço: '+document.getElementById('tipo').value+'\nMensagem: '+document.getElementById('mensagem').value;
+var box=document.getElementById('pedido');box.style.display='block';box.textContent=t;
+});
+</script>
+</body>
+</html>
