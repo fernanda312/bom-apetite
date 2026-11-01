@@ -126,7 +126,7 @@ renderAccount();renderOrders();renderChat();
 }
 function account(){try{return JSON.parse(localStorage.getItem(KEY+'_account'))}catch(e){return null}}
 function renderAccount(){var a=account();var box=document.getElementById('account-box');
-if(a){box.innerHTML='<p>Olá, <b>'+esc(a.name)+'</b> · '+esc(a.email)+' — <button class="btn btn-small btn-ghost" type="button" id="logout">Sair</button></p>';document.getElementById('logout').onclick=function(){localStorage.removeItem(KEY+'_account');renderAccount();renderChat()};var n=document.querySelector('[name=nome]');if(n&&!n.value)n.value=a.name}
+if(a){box.innerHTML='<p>Olá, <b>'+esc(a.name)+'</b> · '+esc(a.email)+' — <button class="btn btn-small btn-ghost" type="button" id="logout">Sair</button></p>';document.getElementById('logout').onclick=function(){localStorage.removeItem(KEY+'_account');renderAccount();renderChat();renderOrders()};var n=document.querySelector('[name=nome]');if(n&&!n.value)n.value=a.name}
 else{box.innerHTML='<p>Para conversares e acompanhares os teus pedidos, cria a tua conta.</p><form id="account-form"><label>O teu nome<input name="anome" required></label><label>Email<input type="email" name="aemail" required></label><p style="text-align:center"><button class="btn" type="submit">Criar conta</button></p></form>';document.getElementById('account-form').addEventListener('submit',function(e){e.preventDefault();var f=e.target;localStorage.setItem(KEY+'_account',JSON.stringify({name:f.anome.value.trim(),email:f.aemail.value.trim()}));renderAccount();renderChat()})}}
 function orders(){try{return JSON.parse(localStorage.getItem(KEY+'_orders'))||[]}catch(e){return []}}
 function renderOrders(){var box=document.getElementById('my-orders');var a=account();if(!a){box.innerHTML='';return}
