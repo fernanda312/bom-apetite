@@ -48,6 +48,11 @@ input::placeholder,textarea::placeholder{color:#B9A69A}
 textarea{min-height:90px;resize:vertical}
 .btn{display:inline-block;margin-top:28px;background:#C1272D;color:#fff;text-decoration:none;padding:16px 36px;border-radius:999px;font-weight:600;font-size:16px;border:none;cursor:pointer}
 .btn:hover{background:#A31F24}
+.btn-small{margin-top:0;padding:10px 20px;font-size:14px;flex-shrink:0}
+.form-erro{color:#FF9A8A;font-size:14px;margin-top:8px;display:none}
+.pedido-acoes{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.pedido-acoes .btn{margin-top:0}
+#pedido-copiado{color:#9AD69A;font-size:14px;margin-top:10px;display:none}
 #pedido{white-space:pre-wrap;border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:16px;margin-top:20px;display:none;font-size:15px}
 footer{padding:56px 0 32px;text-align:center;border-top:1px solid rgba(255,255,255,.12)}
 footer .big{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(38px,7vw,64px)}
@@ -81,18 +86,18 @@ section{padding:52px 0}
 <figure><img src="media/prato-peixe.jpg" alt="Peixe"><figcaption>Peixe</figcaption></figure>
 </div></div>
 
-<section class="wrap center"><p class="small">Sobre</p><h2>Comida que se sente à mesa.</h2><p style="margin-top:18px">Sou o Steven. O meu amor pela cozinha cresceu à volta da mesa, em família, e tornou-se o meu trabalho. Refeições saudáveis, saborosas e bem apresentadas — em casa ou no teu evento — para te concentrares no que mais importa.</p><div style="margin-top:28px"><img src="media/chefe-steven-prato.jpg" alt="Chefe Steven a empratar" style="border-radius:24px;max-width:520px;margin:0 auto"></div></section>
+<section class="wrap center" id="sobre"><p class="small">Sobre</p><h2>Comida que se sente à mesa.</h2><p style="margin-top:18px">Sou o Steven. O meu amor pela cozinha cresceu à volta da mesa, em família, e tornou-se o meu trabalho. Refeições saudáveis, saborosas e bem apresentadas — em casa ou no teu evento — para te concentrares no que mais importa.</p><p style="margin-top:22px"><a class="btn" href="#contratar">Contratar o Chefe Steven</a></p><div style="margin-top:28px"><img src="media/chefe-steven-prato.jpg" alt="Chefe Steven a empratar" style="border-radius:24px;max-width:520px;margin:0 auto"></div></section>
 
-<section class="wrap"><p class="small">Trabalho</p><h2>O que faço</h2><div class="list" style="margin-top:24px">
-<div><b>Em casa</b><span>Jantares à medida, na tua cozinha.</span></div>
-<div><b>Eventos</b><span>Festas e celebrações com menu completo.</span></div>
-<div><b>Hotéis e restaurantes</b><span>Serviço profissional em cozinha.</span></div>
-<div><b>Menus à medida</b><span>Um menu para cada ocasião.</span></div>
+<section class="wrap" id="trabalho"><p class="small">Trabalho</p><h2>O que faço</h2><div class="list" style="margin-top:24px">
+<div><b>Em casa</b><span>Jantares à medida, na tua cozinha.</span><button class="btn btn-small" type="button" data-servico="Chefe em casa">Pedir</button></div>
+<div><b>Eventos</b><span>Festas e celebrações com menu completo.</span><button class="btn btn-small" type="button" data-servico="Chefe de eventos">Pedir</button></div>
+<div><b>Hotéis e restaurantes</b><span>Serviço profissional em cozinha.</span><button class="btn btn-small" type="button" data-servico="Hotel ou restaurante">Pedir</button></div>
+<div><b>Menus à medida</b><span>Um menu para cada ocasião.</span><button class="btn btn-small" type="button" data-servico="Menu à medida">Pedir</button></div>
 </div></section>
 
 <section class="wrap center"><p class="small">Um momento</p><video src="media/video-bife.mp4" autoplay muted loop playsinline preload="metadata"></video></section>
 
-<section class="wrap"><p class="small">Pratos</p><h2>Mais pratos</h2><div class="grid">
+<section class="wrap" id="pratos"><p class="small">Pratos</p><h2>Mais pratos</h2><div class="grid">
 <figure><img src="media/prato-sushi.jpg" alt="Sushi"><figcaption>Sushi</figcaption></figure>
 <figure><img src="media/prato-cordeiro.jpg" alt="Cordeiro"><figcaption>Cordeiro</figcaption></figure>
 <figure><img src="media/prato-salmao.jpg" alt="Salmão"><figcaption>Salmão</figcaption></figure>
@@ -102,7 +107,7 @@ section{padding:52px 0}
 <figure><img src="media/sobremesa-chocolate.jpg" alt="Sobremesa de chocolate"><figcaption>Sobremesa de chocolate</figcaption></figure>
 <figure><img src="media/bebida-coquetel.jpg" alt="Coquetel"><figcaption>Coquetel</figcaption></figure>
 <figure><img src="media/prato-massa.jpg" alt="Massa"><figcaption>Massa</figcaption></figure>
-</div></section>
+</div><p style="text-align:center;margin-top:28px"><a class="btn" href="#contratar">Quero um menu assim</a></p></section>
 
 <section class="wrap center"><p class="small">Outro momento</p><video src="media/video-sal.mp4" autoplay muted loop playsinline preload="metadata"></video></section>
 
@@ -113,16 +118,57 @@ section{padding:52px 0}
 <label>Número de pessoas<input name="pessoas" type="number" min="1"></label>
 <label>Tipo de serviço<select name="tipo"><option>Chefe em casa</option><option>Chefe de eventos</option><option>Hotel ou restaurante</option><option>Menu à medida</option></select></label>
 <label>Mensagem<textarea name="mensagem" placeholder="Ex.: jantar em casa, 10 pessoas, com peixe e sobremesa de chocolate"></textarea></label>
+<p id="form-erro" class="form-erro" role="alert"></p>
 <p style="text-align:center"><button class="btn" type="submit">Preparar o meu pedido</button></p>
 </form>
-<div id="pedido"></div>
+<div id="pedido" aria-live="polite"></div>
+<div id="pedido-acoes" class="pedido-acoes" style="display:none"><button class="btn" type="button" id="btn-copiar">Copiar pedido</button><button class="btn" type="button" id="btn-novo" style="background:transparent;border:1px solid rgba(255,255,255,.4)">Novo pedido</button></div>
+<p id="pedido-copiado">Pedido copiado. Agora podes colá-lo onde quiseres enviar.</p>
 </section>
 
-<footer><div class="wrap"><div class="big">Chefe Steven</div><p style="margin-top:10px"><a href="#contratar">Contratar</a></p></div></footer>
+<footer><div class="wrap"><div class="big">Chefe Steven</div><p style="margin-top:10px"><a href="#sobre">Sobre</a> · <a href="#trabalho">Trabalho</a> · <a href="#pratos">Pratos</a> · <a href="#contratar">Contratar</a></p></div></footer>
 
 <script>
-document.getElementById('form-contratar').addEventListener('submit',function(e){e.preventDefault();var f=e.target;var t='Pedido para a Chefe Steven\nNome: '+f.nome.value+'\nData: '+f.data.value+'\nPessoas: '+f.pessoas.value+'\nServiço: '+f.tipo.value+'\nMensagem: '+f.mensagem.value;var b=document.getElementById('pedido');b.style.display='block';b.textContent=t;});
+(function(){
+var form=document.getElementById('form-contratar');
+var erro=document.getElementById('form-erro');
+var pedidoBox=document.getElementById('pedido');
+var acoes=document.getElementById('pedido-acoes');
+var copiado=document.getElementById('pedido-copiado');
+function mostrarErro(msg){erro.textContent=msg;erro.style.display='block';}
+function limparErro(){erro.textContent='';erro.style.display='none';copiado.style.display='none';}
+form.addEventListener('submit',function(e){
+  e.preventDefault();limparErro();
+  var nome=form.nome.value.trim();
+  if(!nome){mostrarErro('Escreve o teu nome para preparar o pedido.');form.nome.focus();return;}
+  var pessoas=form.pessoas.value;
+  if(pessoas!==''&&(Number(pessoas)<1||!Number.isInteger(Number(pessoas)))){mostrarErro('O número de pessoas tem de ser 1 ou mais.');form.pessoas.focus();return;}
+  var data=form.data.value;
+  if(data){var hoje=new Date();hoje.setHours(0,0,0,0);var d=new Date(data+'T00:00:00');if(d<hoje){mostrarErro('A data não pode ser no passado. Escolhe outra data.');form.data.focus();return;}}
+  var t='Pedido para o Chefe Steven\nNome: '+nome+'\nData: '+(data||'A combinar')+'\nPessoas: '+(pessoas||'A combinar')+'\nServiço: '+form.tipo.value+'\nMensagem: '+(form.mensagem.value.trim()||'—');
+  pedidoBox.style.display='block';pedidoBox.textContent=t;
+  acoes.style.display='flex';
+  pedidoBox.scrollIntoView({behavior:'smooth',block:'center'});
+});
+document.getElementById('btn-copiar').addEventListener('click',function(){
+  var texto=pedidoBox.textContent;
+  function ok(){copiado.style.display='block';}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(texto).then(ok).catch(function(){fallback();});}
+  else{fallback();}
+  function fallback(){var ta=document.createElement('textarea');ta.value=texto;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok();}catch(err){mostrarErro('Não consegui copiar automaticamente. Seleciona o texto do pedido e copia à mão.');}document.body.removeChild(ta);}
+});
+document.getElementById('btn-novo').addEventListener('click',function(){
+  form.reset();pedidoBox.style.display='none';pedidoBox.textContent='';acoes.style.display='none';limparErro();form.nome.focus();
+});
+document.querySelectorAll('[data-servico]').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    form.tipo.value=btn.getAttribute('data-servico');
+    document.getElementById('contratar').scrollIntoView({behavior:'smooth'});
+    form.nome.focus();
+  });
+});
 document.querySelectorAll('video').forEach(function(v){v.removeAttribute('controls');v.muted=true;v.loop=true;v.playsInline=true;var p=v.play();if(p&&p.catch){p.catch(function(){});}});
+})();
 </script>
 </body>
 </html>
