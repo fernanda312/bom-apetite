@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chefe Meli</title>
-<meta name="description" content="Chefe Meli — comida requintada, serviço à medida.">
+<title>Chefe Steven</title>
+<meta name="description" content="Chefe Steven — comida requintada, serviço à medida.">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
@@ -62,9 +62,9 @@ section{padding:52px 0}
 </style>
 </head>
 <body>
-<nav><a class="logo" href="#inicio">Chefe Meli</a><a class="nav-cta" href="#contratar">Contratar</a></nav>
+<nav><a class="logo" href="#inicio">Chefe Steven</a><a class="nav-cta" href="#contratar">Contratar</a></nav>
 
-<header class="hero" id="inicio"><img src="media/hero-meli.jpg" alt="Chefe Meli"></header>
+<header class="hero" id="inicio"><img src="media/chefe-steven-hero.jpg" alt="Chefe Steven"></header>
 
 <div class="ribbon"><div class="ribbon-track">
 <figure><img src="media/prato-bife-cogumelos.jpg" alt="Bife com cogumelos"><figcaption>Bife com cogumelos</figcaption></figure>
@@ -81,7 +81,7 @@ section{padding:52px 0}
 <figure><img src="media/prato-peixe.jpg" alt="Peixe"><figcaption>Peixe</figcaption></figure>
 </div></div>
 
-<section class="wrap center"><p class="small">Sobre</p><h2>Comida que se sente à mesa.</h2><p style="margin-top:18px">Sou a Meli. O meu amor pela cozinha cresceu à volta da mesa, em família, e tornou-se o meu trabalho. Refeições saudáveis, saborosas e bem apresentadas — em casa ou no teu evento — para te concentrares no que mais importa.</p><div style="margin-top:28px"><img src="media/meli-flambe.jpg" alt="Chefe Meli a flambar" style="border-radius:24px;max-width:520px;margin:0 auto"></div></section>
+<section class="wrap center"><p class="small">Sobre</p><h2>Comida que se sente à mesa.</h2><p style="margin-top:18px">Sou o Steven. O meu amor pela cozinha cresceu à volta da mesa, em família, e tornou-se o meu trabalho. Refeições saudáveis, saborosas e bem apresentadas — em casa ou no teu evento — para te concentrares no que mais importa.</p><div style="margin-top:28px"><img src="media/chefe-steven-prato.jpg" alt="Chefe Steven a empratar" style="border-radius:24px;max-width:520px;margin:0 auto"></div></section>
 
 <section class="wrap"><p class="small">Trabalho</p><h2>O que faço</h2><div class="list" style="margin-top:24px">
 <div><b>Em casa</b><span>Jantares à medida, na tua cozinha.</span></div>
@@ -101,12 +101,12 @@ section{padding:52px 0}
 <figure><img src="media/prato-massa-parmesao.jpg" alt="Massa com parmesão"><figcaption>Massa com parmesão</figcaption></figure>
 <figure><img src="media/sobremesa-chocolate.jpg" alt="Sobremesa de chocolate"><figcaption>Sobremesa de chocolate</figcaption></figure>
 <figure><img src="media/bebida-coquetel.jpg" alt="Coquetel"><figcaption>Coquetel</figcaption></figure>
-<figure><img src="media/meli-temperar.jpg" alt="Chefe Meli a temperar"><figcaption>A temperar</figcaption></figure>
+<figure><img src="media/prato-massa.jpg" alt="Massa"><figcaption>Massa</figcaption></figure>
 </div></section>
 
 <section class="wrap center"><p class="small">Outro momento</p><video src="media/video-sal.mp4" autoplay muted loop playsinline preload="metadata"></video></section>
 
-<section class="wrap center" id="contratar"><p class="small">Contratar</p><h2>Vamos pôr a mesa?</h2><p>Diz a data, o número de pessoas e o tipo de serviço. A Chefe Meli propõe o menu e cozinha para ti.</p>
+<section class="wrap center" id="contratar"><p class="small">Contratar</p><h2>Vamos pôr a mesa?</h2><p>Diz a data, o número de pessoas e o tipo de serviço. A Chefe Steven propõe o menu e cozinha para ti.</p>
 <form id="form-contratar">
 <label>O teu nome<input name="nome" required></label>
 <label>Data<input name="data" type="date"></label>
@@ -118,10 +118,10 @@ section{padding:52px 0}
 <div id="pedido"></div>
 </section>
 
-<footer><div class="wrap"><div class="big">Chefe Meli</div><p style="margin-top:10px"><a href="#contratar">Contratar</a></p></div></footer>
+<footer><div class="wrap"><div class="big">Chefe Steven</div><p style="margin-top:10px"><a href="#contratar">Contratar</a></p></div></footer>
 
 <script>
-document.getElementById('form-contratar').addEventListener('submit',function(e){e.preventDefault();var f=e.target;var t='Pedido para a Chefe Meli\nNome: '+f.nome.value+'\nData: '+f.data.value+'\nPessoas: '+f.pessoas.value+'\nServiço: '+f.tipo.value+'\nMensagem: '+f.mensagem.value;var b=document.getElementById('pedido');b.style.display='block';b.textContent=t;});
+document.getElementById('form-contratar').addEventListener('submit',function(e){e.preventDefault();var f=e.target;var t='Pedido para a Chefe Steven\nNome: '+f.nome.value+'\nData: '+f.data.value+'\nPessoas: '+f.pessoas.value+'\nServiço: '+f.tipo.value+'\nMensagem: '+f.mensagem.value;var b=document.getElementById('pedido');b.style.display='block';b.textContent=t;});
 document.querySelectorAll('video').forEach(function(v){v.removeAttribute('controls');v.muted=true;v.loop=true;v.playsInline=true;var p=v.play();if(p&&p.catch){p.catch(function(){});}});
 </script>
 </body>
