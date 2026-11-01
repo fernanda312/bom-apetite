@@ -1,0 +1,63 @@
+<!doctype html><html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin — Chefe Jerry</title><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Manrope:wght@300;400;600&display=swap" rel="stylesheet"><style>
+body{margin:0;background:linear-gradient(180deg,#0B0505,#1F0808);background-attachment:fixed;color:#F5EDE6;font-family:'Manrope',Arial,sans-serif;line-height:1.6}
+.wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px}
+h1,h2{font-family:'Instrument Serif',serif;font-weight:400}
+a{color:#fff}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}
+.tabs button{background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;padding:10px 18px;border-radius:999px;cursor:pointer}
+.tabs button.on{background:linear-gradient(135deg,#E8382E,#3D0505);border-color:transparent}
+.card{border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:20px;margin:16px 0;background:rgba(255,255,255,.03)}
+label{display:block;margin-top:14px;font-size:13px;letter-spacing:1px;text-transform:uppercase;opacity:.8}
+input,select,textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.35);color:#F5EDE6;padding:10px 0;font-size:16px;font-family:inherit;outline:none}
+select option{color:#111}
+.btn{display:inline-block;margin-top:16px;background:linear-gradient(135deg,#E8382E,#3D0505);color:#fff;padding:12px 28px;border-radius:999px;border:none;cursor:pointer;font-weight:600}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.4)}
+img{max-width:100%;height:auto;border-radius:14px}
+table{width:100%;border-collapse:collapse}
+td,th{padding:8px 4px;border-bottom:1px solid rgba(255,255,255,.12);text-align:left;font-size:14px}
+.ok{color:#9AD69A}
+</style></head><body><div class="wrap">
+<p><a href="index.html">← Voltar ao site</a></p><h1>Admin</h1><p id="admin-status"></p>
+<div id="setup" style="display:none"><div class="card"><h2>Definir acesso do admin</h2><p>Escolhe o email do admin. Só esse email entra aqui.</p><form id="setup-form"><label>Email do admin<input type="email" name="email" required></label><p><button class="btn" type="submit">Guardar acesso</button></p></form></div></div>
+<div id="login" style="display:none"><div class="card"><h2>Entrar</h2><form id="login-form"><label>Email<input type="email" name="email" required></label><p><button class="btn" type="submit">Entrar</button></p><p id="login-erro" style="color:#FF9A8A;display:none">Sem acesso a este admin.</p></form></div></div>
+<div id="panel" style="display:none">
+<div class="tabs" id="tabs"></div>
+<div id="tab-chefe" class="tab"><div class="card"><h2>Chefe e contacto</h2><label>Nome do chefe<input id="f-chef"></label><label>Cidade<input id="f-city"></label><label>WhatsApp (só números, com código do país)<input id="f-wa" placeholder="258840000000"></label><label>Sobre<textarea id="f-about" rows="4"></textarea></label><p><button class="btn" id="save-chefe">Guardar</button></p></div>
+<div class="card"><h2>Fotos</h2><p>Foto do hero</p><img id="p-hero" style="max-width:320px"><label>Escolher foto do hero<input type="file" id="file-hero" accept="image/*"></label><p>Foto do Sobre</p><img id="p-about" style="max-width:320px"><label>Escolher foto do Sobre<input type="file" id="file-about" accept="image/*"></label><p><button class="btn" id="save-photos">Guardar fotos</button></p><p id="photo-ok" class="ok" style="display:none">Fotos guardadas.</p></div></div>
+<div id="tab-servicos" class="tab" style="display:none"><div id="services-edit"></div><p><button class="btn" id="add-service">Adicionar serviço</button></p></div>
+<div id="tab-pratos" class="tab" style="display:none"><div id="dishes-edit"></div><p><button class="btn" id="add-dish">Adicionar prato</button></p></div>
+<div id="tab-pedidos" class="tab" style="display:none"><div id="orders-list"></div></div>
+<div id="tab-conversas" class="tab" style="display:none"><div id="chats-list"></div></div>
+<div id="tab-defs" class="tab" style="display:none"><div class="card"><h2>Definições</h2><p><button class="btn btn-ghost" id="reset-data">Repor conteúdo original</button> <button class="btn btn-ghost" id="logout">Sair do admin</button></p><p>Repor volta ao conteúdo inicial do site, incluindo serviços e pratos.</p></div></div>
+</div></div>
+<script>
+var KEY='bomapetite_v1';
+function load(){try{var d=JSON.parse(localStorage.getItem(KEY));return d&&d.chef?d:null}catch(e){return null}}
+var DATA=load();
+if(!DATA){document.getElementById('admin-status').textContent='Ainda não há conteúdo guardado neste navegador. Abre primeiro o site para carregar o conteúdo inicial.'}
+var adminEmail=localStorage.getItem(KEY+'_admin');
+var session=localStorage.getItem(KEY+'_admin_session');
+function show(id){document.querySelectorAll('.tab').forEach(function(t){t.style.display='none'});document.getElementById('tab-'+id).style.display='block';document.querySelectorAll('#tabs button').forEach(function(b){b.classList.toggle('on',b.dataset.tab===id)})}
+var tabs=[['chefe','Chefe'],['servicos','Serviços'],['pratos','Pratos'],['pedidos','Pedidos'],['conversas','Conversas'],['defs','Definições']];
+var tb=document.getElementById('tabs');tabs.forEach(function(t){var b=document.createElement('button');b.textContent=t[1];b.dataset.tab=t[0];b.onclick=function(){show(t[0]);renderTab(t[0])};tb.appendChild(b)});
+if(!adminEmail){document.getElementById('setup').style.display='block';document.getElementById('setup-form').addEventListener('submit',function(e){e.preventDefault();localStorage.setItem(KEY+'_admin',e.target.email.value.trim());localStorage.setItem(KEY+'_admin_session',e.target.email.value.trim());location.reload()})}
+else if(session!==adminEmail){document.getElementById('login').style.display='block';document.getElementById('login-form').addEventListener('submit',function(e){e.preventDefault();if(e.target.email.value.trim()===adminEmail){localStorage.setItem(KEY+'_admin_session',adminEmail);location.reload()}else{document.getElementById('login-erro').style.display='block'}})}
+else{document.getElementById('panel').style.display='block';document.getElementById('admin-status').textContent='Admin: '+adminEmail;renderTab('chefe');show('chefe')}
+function save(){localStorage.setItem(KEY,JSON.stringify(DATA))}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+function fileToData(input,cb){var f=input.files[0];if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
+function renderTab(tab){
+if(!DATA)return;
+if(tab==='chefe'){document.getElementById('f-chef').value=DATA.chef;document.getElementById('f-city').value=DATA.city||'';document.getElementById('f-wa').value=DATA.whatsapp||'';document.getElementById('f-about').value=DATA.about;document.getElementById('p-hero').src=DATA.hero;document.getElementById('p-about').src=DATA.aboutImg}
+if(tab==='servicos'){var el=document.getElementById('services-edit');el.innerHTML='';DATA.services.forEach(function(s,i){var c=document.createElement('div');c.className='card';c.innerHTML='<label>Nome<input data-k="name" value="'+esc(s.name)+'"></label><label>Descrição<input data-k="desc" value="'+esc(s.desc)+'"></label><label>Preço (MT)<input type="number" data-k="price" value="'+s.price+'"></label><button class="btn btn-ghost" data-del>Remover</button>';c.querySelectorAll('input').forEach(function(inp){inp.addEventListener('input',function(){s[inp.dataset.k]=inp.dataset.k==='price'?Number(inp.value):inp.value;save()})});c.querySelector('[data-del]').onclick=function(){DATA.services.splice(i,1);save();renderTab('servicos')};el.appendChild(c)})}
+if(tab==='pratos'){var el=document.getElementById('dishes-edit');el.innerHTML='';DATA.dishes.forEach(function(d,i){var c=document.createElement('div');c.className='card';c.innerHTML='<img src="'+d.img+'" style="max-width:220px"><label>Nome<input data-k="name" value="'+esc(d.name)+'"></label><label>Preço (MT)<input type="number" data-k="price" value="'+d.price+'"></label><label>Foto<input type="file" accept="image/*" data-file></label><button class="btn btn-ghost" data-del>Remover</button>';c.querySelectorAll('input[data-k]').forEach(function(inp){inp.addEventListener('input',function(){d[inp.dataset.k]=inp.dataset.k==='price'?Number(inp.value):inp.value;save()})});c.querySelector('[data-file]').addEventListener('change',function(e){fileToData(e.target,function(url){d.img=url;save();renderTab('pratos')})});c.querySelector('[data-del]').onclick=function(){DATA.dishes.splice(i,1);save();renderTab('pratos')};el.appendChild(c)})}
+if(tab==='pedidos'){var list=[];try{list=JSON.parse(localStorage.getItem(KEY+'_orders'))||[]}catch(e){}var el=document.getElementById('orders-list');if(!list.length){el.innerHTML='<div class="card"><p>Ainda não há pedidos.</p></div>';return}var html='<div class="card"><table><tr><th>Número</th><th>Cliente</th><th>Serviço</th><th>Data</th><th>Estado</th></tr>';list.slice().reverse().forEach(function(o,ri){var idx=list.length-1-ri;html+='<tr><td>'+esc(o.number)+'</td><td>'+esc(o.name)+'</td><td>'+esc(o.service)+'</td><td>'+esc(o.date||'—')+'</td><td><select data-idx="'+idx+'"><option'+(o.status==='Novo'?' selected':'')+'>Novo</option><option'+(o.status==='Confirmado'?' selected':'')+'>Confirmado</option><option'+(o.status==='Concluído'?' selected':'')+'>Concluído</option><option'+(o.status==='Cancelado'?' selected':'')+'>Cancelado</option></select></td></tr>'});html+='</table></div>';el.innerHTML=html;el.querySelectorAll('select').forEach(function(sel){sel.addEventListener('change',function(){list[Number(sel.dataset.idx)].status=sel.value;localStorage.setItem(KEY+'_orders',JSON.stringify(list))})})}
+if(tab==='conversas'){var all=[];try{all=JSON.parse(localStorage.getItem(KEY+'_chats'))||[]}catch(e){}var el=document.getElementById('chats-list');if(!all.length){el.innerHTML='<div class="card"><p>Ainda não há conversas.</p></div>';return}var by={};all.forEach(function(m){(by[m.email]=by[m.email]||[]).push(m)});var html='';Object.keys(by).forEach(function(email){html+='<div class="card"><h3>'+esc(by[email][0].name)+' · '+esc(email)+'</h3>';by[email].forEach(function(m){html+='<p><b>'+(m.from==='admin'?'Chefe':'Cliente')+':</b> '+esc(m.text)+'</p>'});html+='<label>Resposta<textarea data-reply="'+esc(email)+'" rows="2"></textarea></label><button class="btn" data-send="'+esc(email)+'">Responder</button></div>'});el.innerHTML=html;el.querySelectorAll('[data-send]').forEach(function(b){b.onclick=function(){var email=b.dataset.send;var ta=el.querySelector('[data-reply="'+email+'"]');if(!ta.value.trim())return;all.push({email:email,name:by[email][0].name,from:'admin',text:ta.value.trim(),at:Date.now()});localStorage.setItem(KEY+'_chats',JSON.stringify(all));renderTab('conversas')}})}
+}
+document.getElementById('save-chefe').onclick=function(){DATA.chef=document.getElementById('f-chef').value.trim()||DATA.chef;DATA.city=document.getElementById('f-city').value.trim();DATA.whatsapp=document.getElementById('f-wa').value.trim();DATA.about=document.getElementById('f-about').value.trim();save();alert('Guardado.')};
+document.getElementById('save-photos').onclick=function(){var h=document.getElementById('file-hero');var a=document.getElementById('file-about');var done=0;var total=(h.files.length?1:0)+(a.files.length?1:0);if(!total){alert('Escolhe uma foto primeiro.');return}if(h.files.length)fileToData(h,function(url){DATA.hero=url;save();document.getElementById('p-hero').src=url;done++;if(done===total)document.getElementById('photo-ok').style.display='block'});if(a.files.length)fileToData(a,function(url){DATA.aboutImg=url;save();document.getElementById('p-about').src=url;done++;if(done===total)document.getElementById('photo-ok').style.display='block'})};
+document.getElementById('add-service').onclick=function(){DATA.services.push({name:'Novo serviço',desc:'Descrição curta.',price:1000});save();renderTab('servicos')};
+document.getElementById('add-dish').onclick=function(){DATA.dishes.push({name:'Novo prato',price:1000,img:'media/prato-massa.jpg'});save();renderTab('pratos')};
+document.getElementById('reset-data').onclick=function(){if(confirm('Repor o conteúdo original?')){localStorage.removeItem(KEY);location.reload()}};
+document.getElementById('logout').onclick=function(){localStorage.removeItem(KEY+'_admin_session');location.reload()};
+</script></body></html>
