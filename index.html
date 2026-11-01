@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chefe Steven</title>
-<meta name="description" content="Chefe Steven — comida requintada, serviço à medida.">
+<title>Chefe Jerry</title>
+<meta name="description" content="Chefe Jerry — comida requintada, serviço à medida.">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
@@ -67,9 +67,9 @@ section{padding:52px 0}
 </style>
 </head>
 <body>
-<nav><a class="logo" href="#inicio">Chefe Steven</a><a class="nav-cta" href="#contratar">Contratar</a></nav>
+<nav><a class="logo" href="#inicio">Chefe Jerry</a><a class="nav-cta" href="#contratar">Contratar</a></nav>
 
-<header class="hero" id="inicio"><img src="media/chefe-steven-hero.jpg" alt="Chefe Steven"></header>
+<header class="hero" id="inicio"><img src="media/chefe-jerry-hero.jpg" alt="Chefe Jerry"></header>
 
 <div class="ribbon"><div class="ribbon-track">
 <figure><img src="media/prato-bife-cogumelos.jpg" alt="Bife com cogumelos"><figcaption>Bife com cogumelos</figcaption></figure>
@@ -86,7 +86,7 @@ section{padding:52px 0}
 <figure><img src="media/prato-peixe.jpg" alt="Peixe"><figcaption>Peixe</figcaption></figure>
 </div></div>
 
-<section class="wrap center" id="sobre"><p class="small">Sobre</p><h2>Comida que se sente à mesa.</h2><p style="margin-top:18px">Sou o Steven. O meu amor pela cozinha cresceu à volta da mesa, em família, e tornou-se o meu trabalho. Refeições saudáveis, saborosas e bem apresentadas — em casa ou no teu evento — para te concentrares no que mais importa.</p><p style="margin-top:22px"><a class="btn" href="#contratar">Contratar o Chefe Steven</a></p><div style="margin-top:28px"><img src="media/chefe-steven-prato.jpg" alt="Chefe Steven a empratar" style="border-radius:24px;max-width:520px;margin:0 auto"></div></section>
+<section class="wrap center" id="sobre"><p class="small">Sobre</p><h2>Comida que se sente à mesa.</h2><p style="margin-top:18px">Sou o Jerry. O meu amor pela cozinha cresceu à volta da mesa, em família, e tornou-se o meu trabalho. Refeições saudáveis, saborosas e bem apresentadas — em casa ou no teu evento — para te concentrares no que mais importa.</p><p style="margin-top:22px"><a class="btn" href="#contratar">Contratar o Chefe Jerry</a></p><div style="margin-top:28px"><img src="media/chefe-jerry-sobre.jpg" alt="Chefe Jerry" style="border-radius:24px;max-width:520px;margin:0 auto"></div></section>
 
 <section class="wrap" id="trabalho"><p class="small">Trabalho</p><h2>O que faço</h2><div class="list" style="margin-top:24px">
 <div><b>Em casa</b><span>Jantares à medida, na tua cozinha.</span><button class="btn btn-small" type="button" data-servico="Chefe em casa">Pedir</button></div>
@@ -111,7 +111,7 @@ section{padding:52px 0}
 
 <section class="wrap center"><p class="small">Outro momento</p><video src="media/video-sal.mp4" autoplay muted loop playsinline preload="metadata"></video></section>
 
-<section class="wrap center" id="contratar"><p class="small">Contratar</p><h2>Vamos pôr a mesa?</h2><p>Diz a data, o número de pessoas e o tipo de serviço. A Chefe Steven propõe o menu e cozinha para ti.</p>
+<section class="wrap center" id="contratar"><p class="small">Contratar</p><h2>Vamos pôr a mesa?</h2><p>Diz a data, o número de pessoas e o tipo de serviço. O Chefe Jerry propõe o menu e cozinha para ti.</p>
 <form id="form-contratar">
 <label>O teu nome<input name="nome" required></label>
 <label>Data<input name="data" type="date"></label>
@@ -126,7 +126,7 @@ section{padding:52px 0}
 <p id="pedido-copiado">Pedido copiado. Agora podes colá-lo onde quiseres enviar.</p>
 </section>
 
-<footer><div class="wrap"><div class="big">Chefe Steven</div><p style="margin-top:10px"><a href="#sobre">Sobre</a> · <a href="#trabalho">Trabalho</a> · <a href="#pratos">Pratos</a> · <a href="#contratar">Contratar</a></p></div></footer>
+<footer><div class="wrap"><div class="big">Chefe Jerry</div><p style="margin-top:10px"><a href="#sobre">Sobre</a> · <a href="#trabalho">Trabalho</a> · <a href="#pratos">Pratos</a> · <a href="#contratar">Contratar</a></p></div></footer>
 
 <script>
 (function(){
@@ -145,7 +145,7 @@ form.addEventListener('submit',function(e){
   if(pessoas!==''&&(Number(pessoas)<1||!Number.isInteger(Number(pessoas)))){mostrarErro('O número de pessoas tem de ser 1 ou mais.');form.pessoas.focus();return;}
   var data=form.data.value;
   if(data){var hoje=new Date();hoje.setHours(0,0,0,0);var d=new Date(data+'T00:00:00');if(d<hoje){mostrarErro('A data não pode ser no passado. Escolhe outra data.');form.data.focus();return;}}
-  var t='Pedido para o Chefe Steven\nNome: '+nome+'\nData: '+(data||'A combinar')+'\nPessoas: '+(pessoas||'A combinar')+'\nServiço: '+form.tipo.value+'\nMensagem: '+(form.mensagem.value.trim()||'—');
+  var t='Pedido para o Chefe Jerry\nNome: '+nome+'\nData: '+(data||'A combinar')+'\nPessoas: '+(pessoas||'A combinar')+'\nServiço: '+form.tipo.value+'\nMensagem: '+(form.mensagem.value.trim()||'—');
   pedidoBox.style.display='block';pedidoBox.textContent=t;
   acoes.style.display='flex';
   pedidoBox.scrollIntoView({behavior:'smooth',block:'center'});
