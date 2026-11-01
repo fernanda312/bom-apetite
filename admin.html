@@ -1,5 +1,5 @@
 <!doctype html><html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin — Chefe Jerry</title><link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"><style>
-body{margin:0;background:linear-gradient(180deg,#0B0505,#1F0808);background-attachment:fixed;color:#F5EDE6;font-family:'Jost',Arial,sans-serif;line-height:1.6}
+body{margin:0;background-color:#0B0505;background:linear-gradient(180deg,#0B0505,#1F0808);background-attachment:fixed;color:#F5EDE6;font-family:'Jost',Arial,sans-serif;line-height:1.6}
 .wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px}
 h1,h2{font-family:'Italiana',serif;font-weight:400}
 a{color:#fff}
@@ -32,11 +32,11 @@ td,th{padding:8px 4px;border-bottom:1px solid rgba(255,255,255,.12);text-align:l
 </div></div>
 <script>
 var KEY='bomapetite_v1';
-var DEFAULTS={chef:'Chefe Jerry',city:'Maputo',whatsapp:'',about:'Sou o Jerry. O meu amor pela cozinha cresceu à volta da mesa, em família, e tornou-se o meu trabalho. Refeições saudáveis, saborosas e bem apresentadas — em casa ou no teu evento.',hero:'media/chefe-jerry-sobre.jpg',aboutImg:'media/chefe-jerry-hero.jpg',
+var DEFAULTS={chef:'Chefe Jerry',city:'Maputo',whatsapp:'258840000000',about:'Sou o Jerry. O meu amor pela cozinha cresceu à volta da mesa, em família, e tornou-se o meu trabalho. Refeições saudáveis, saborosas e bem apresentadas — em casa ou no teu evento.',hero:'media/chefe-jerry-sobre.jpg',aboutImg:'media/chefe-jerry-hero.jpg',
 services:[{name:'Chefe em casa',desc:'Jantares à medida, na tua cozinha.',price:3500},{name:'Chefe de eventos',desc:'Festas e celebrações com menu completo.',price:2800},{name:'Hotel ou restaurante',desc:'Serviço profissional em cozinha.',price:15000},{name:'Menu à medida',desc:'Um menu para cada ocasião.',price:4200}],
 dishes:[{name:'Sushi',price:1200,img:'media/prato-sushi.jpg'},{name:'Cordeiro',price:1800,img:'media/prato-cordeiro.jpg'},{name:'Salmão',price:1650,img:'media/prato-salmao.jpg'},{name:'Grelhado',price:1400,img:'media/prato-grelhado.jpg'},{name:'Bife com puré',price:1500,img:'media/prato-bife-pure.jpg'},{name:'Massa com parmesão',price:950,img:'media/prato-massa-parmesao.jpg'},{name:'Sobremesa de chocolate',price:650,img:'media/sobremesa-chocolate.jpg'},{name:'Coquetel',price:800,img:'media/bebida-coquetel.jpg'},{name:'Massa',price:900,img:'media/prato-massa.jpg'}],
 ribbon:[{name:'Bife com cogumelos',img:'media/prato-bife-cogumelos.jpg'},{name:'Carne em prato preto',img:'media/prato-carne-preto.jpg'},{name:'Prato com molho',img:'media/prato-molho.jpg'},{name:'Prato frito',img:'media/prato-frito.jpg'},{name:'Peixe',img:'media/prato-peixe.jpg'}]};
-function load(){try{var d=JSON.parse(localStorage.getItem(KEY));if(d&&d.chef)return d}catch(e){}try{localStorage.setItem(KEY,JSON.stringify(DEFAULTS))}catch(e){}return JSON.parse(JSON.stringify(DEFAULTS))}
+function load(){try{var d=JSON.parse(localStorage.getItem(KEY));if(d&&d.chef){if(!d.whatsapp){d.whatsapp='258840000000';try{localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}}return d}}catch(e){}try{localStorage.setItem(KEY,JSON.stringify(DEFAULTS))}catch(e){}return JSON.parse(JSON.stringify(DEFAULTS))}
 var DATA=load();
 
 var adminEmail=localStorage.getItem(KEY+'_admin');
