@@ -335,4 +335,8 @@ document.getElementById('form-contratar').addEventListener('submit',function(e){
   document.querySelectorAll('video').forEach(function(v){v.removeAttribute('controls');v.muted=true;v.loop=true;v.playsInline=true;var p=v.play();if(p&&p.catch){p.catch(function(){});}});
 })();
 </script>
+<style>
+/* Footer photo: show Meli whole, no cropped head */
+.framer-338i05 img{object-fit:contain!important;object-position:center top!important;background:#000!important}
+</style>
 </body></html>
