@@ -186,7 +186,7 @@
 <style>
 /* BOM APETITE additions: keep original design, make tickers move without Framer JS, and keep phone layout clean */
 [data-framer-name="Ticker"]{overflow:hidden!important}
-[data-framer-name="Ticker"] > div{animation:bom-scroll 40s linear infinite!important}
+
 @keyframes bom-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media (max-width:809px){
   [data-framer-name="Phone"]{position:sticky!important;top:0!important}
@@ -220,14 +220,30 @@ img[src^="media/prato-"],img[src^="media/sobremesa-"],img[src^="media/bebida-"],
   .bom-section h2{font-size:27px}
   img[src="media/hero-meli.jpg"]{object-fit:contain!important}
 }
+
+/* Phone fixes 2026-11-01: hero full, ticker track, grid 1 column */
+[data-framer-name="Ticker"] ul{width:max-content!important;animation:bom-scroll 32s linear infinite!important}
+[data-framer-name="Ticker"] li{flex-shrink:0!important}
+[data-framer-name="Ticker"] .framer-72payh{position:relative!important;height:280px!important}
+[data-framer-name="Ticker"] .framer-72payh img{position:static!important;width:100%!important;height:280px!important;object-fit:contain!important;background:#111!important}
+.bom-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px;color:#1c1a17}
+.bom-grid img{width:100%;height:280px;object-fit:contain!important;background:#111;border-radius:14px;display:block}
+@media (max-width:809px){
+  .framer-1praq55{position:relative!important;width:100%!important;height:auto!important;left:0!important;top:auto!important;-webkit-mask:none!important;mask:none!important}
+  .framer-1praq55 div[data-framer-background-image-wrapper]{position:relative!important;height:auto!important;aspect-ratio:4/5!important}
+  .framer-1praq55 img{position:static!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center top!important;background:#000!important}
+  .framer-1o7uqbw{height:auto!important;padding:80px 20px 20px!important;gap:20px!important}
+  [data-framer-name="Ticker"] .framer-72payh{height:240px!important}
+  [data-framer-name="Ticker"] .framer-72payh img{height:240px!important}
+  .bom-grid{grid-template-columns:1fr!important}
+  .bom-grid img{height:auto!important}
+  .bom-videos{grid-template-columns:1fr!important}
+}
 </style>
 <div class="bom-section" id="videos">
-<h2>Vídeos</h2>
-<p>O trabalho da Chefe Meli em vídeo: o tempero, o sal e o cuidado no prato.</p>
-<div class="bom-videos">
+<h2>Vídeo: o trabalho no fogo</h2>
+<p>O trabalho da Chefe Meli em vídeo: o tempero e o cuidado no prato.</p>
 <video src="media/video-bife.mp4" autoplay muted loop playsinline preload="metadata" style="width:100%;height:auto;display:block;border-radius:14px;background:#000"></video>
-<video src="media/video-sal.mp4" autoplay muted loop playsinline preload="metadata" style="width:100%;height:auto;display:block;border-radius:14px;background:#000"></video>
-</div>
 </div>
 <div class="bom-section">
 <div class="bom-black">
@@ -237,16 +253,21 @@ img[src^="media/prato-"],img[src^="media/sobremesa-"],img[src^="media/bebida-"],
 </div>
 </div>
 
+<div class="bom-section" id="video-sal">
+<h2>Vídeo: o sal na hora</h2>
+<p>O sal a cair sobre o bife, com alecrim — tempero na hora, sem pressa.</p>
+<video src="media/video-sal.mp4" autoplay muted loop playsinline preload="metadata" style="width:100%;height:auto;display:block;border-radius:14px;background:#000"></video>
+</div>
 <div class="bom-section" id="mais-pratos">
 <h2>Mais pratos em destaque</h2>
 <p>Todos os pratos enviados estão em destaque, bem apresentados, sem cortes.</p>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px;color:#1c1a17">
-<div><img src="media/sobremesa-chocolate.jpg" alt="Sobremesa de chocolate" style="width:100%;height:280px;object-fit:cover;border-radius:14px;display:block"><p>Sobremesa de chocolate</p></div>
-<div><img src="media/prato-massa-parmesao.jpg" alt="Massa com parmesão" style="width:100%;height:280px;object-fit:cover;border-radius:14px;display:block"><p>Massa com parmesão</p></div>
-<div><img src="media/bebida-coquetel.jpg" alt="Coquetel" style="width:100%;height:280px;object-fit:cover;border-radius:14px;display:block"><p>Coquetel</p></div>
-<div><img src="media/menu-coquetel.jpg" alt="Menu com coquetel" style="width:100%;height:280px;object-fit:cover;border-radius:14px;display:block"><p>O menu</p></div>
-<div><img src="media/meli-temperar.jpg" alt="Chefe Meli a temperar" style="width:100%;height:280px;object-fit:cover;border-radius:14px;display:block"><p>A Chefe Meli a temperar</p></div>
-<div><img src="media/meli-restaurante.jpg" alt="Chefe Meli num restaurante" style="width:100%;height:280px;object-fit:cover;border-radius:14px;display:block"><p>Chefe Meli no restaurante</p></div>
+<div class="bom-grid">
+<div><img src="media/sobremesa-chocolate.jpg" alt="Sobremesa de chocolate" style="width:100%;height:280px;object-fit:contain;background:#111;border-radius:14px;display:block"><p>Sobremesa de chocolate</p></div>
+<div><img src="media/prato-massa-parmesao.jpg" alt="Massa com parmesão" style="width:100%;height:280px;object-fit:contain;background:#111;border-radius:14px;display:block"><p>Massa com parmesão</p></div>
+<div><img src="media/bebida-coquetel.jpg" alt="Coquetel" style="width:100%;height:280px;object-fit:contain;background:#111;border-radius:14px;display:block"><p>Coquetel</p></div>
+<div><img src="media/menu-coquetel.jpg" alt="Menu com coquetel" style="width:100%;height:280px;object-fit:contain;background:#111;border-radius:14px;display:block"><p>O menu</p></div>
+<div><img src="media/meli-temperar.jpg" alt="Chefe Meli a temperar" style="width:100%;height:280px;object-fit:contain;background:#111;border-radius:14px;display:block"><p>A Chefe Meli a temperar</p></div>
+<div><img src="media/meli-restaurante.jpg" alt="Chefe Meli num restaurante" style="width:100%;height:280px;object-fit:contain;background:#111;border-radius:14px;display:block"><p>Chefe Meli no restaurante</p></div>
 </div>
 </div>
 <div class="bom-section" id="contratar">
@@ -270,24 +291,9 @@ document.getElementById('form-contratar').addEventListener('submit',function(e){
 <script>
 (function(){
   // Hero: full photo, no crop
-  var hero=document.querySelector('img[src="media/hero-meli.jpg"]');
-  if(hero){
-    var w=hero.parentElement;
-    if(w){w.style.position='relative';w.style.height='auto';w.style.aspectRatio='4 / 5';}
-    hero.style.position='static';hero.style.width='100%';hero.style.height='100%';hero.style.objectFit='contain';
-  }
-  // Ticker: find the row with dish cards inside Ticker and animate it
-  document.querySelectorAll('[data-framer-name="Ticker"]').forEach(function(t){
-    var track=null;
-    t.querySelectorAll('div,ul').forEach(function(el){
-      if(el.children.length>=6 && getComputedStyle(el).display==='flex' && !track){track=el;}
-    });
-    if(track){
-      track.style.width='max-content';
-      track.style.animation='bom-scroll 32s linear infinite';
-      track.style.willChange='transform';
-    }
-  });
+  document.querySelectorAll('img[src="media/hero-meli.jpg"]').forEach(function(hero){var w=hero.parentElement;if(w){w.style.position='relative';w.style.height='auto';w.style.aspectRatio='4 / 5';}hero.style.position='static';hero.style.width='100%';hero.style.height='100%';hero.style.objectFit='contain';});
+  // Ticker: animate the ul track only, not the container
+  document.querySelectorAll('[data-framer-name="Ticker"] ul').forEach(function(ul){ul.style.width='max-content';ul.style.animation='bom-scroll 32s linear infinite';});
   // Videos: autoplay without player UI
   document.querySelectorAll('video').forEach(function(v){v.removeAttribute('controls');v.muted=true;v.loop=true;v.playsInline=true;var p=v.play();if(p&&p.catch){p.catch(function(){});}});
 })();
