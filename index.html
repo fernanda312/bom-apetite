@@ -3,126 +3,96 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chefe Meli — Comida requintada, serviço à medida</title>
-<meta name="description" content="Chefe Meli — comida saborosa e bem apresentada, em casa, em eventos e em hotéis e restaurantes.">
-<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Chefe Meli</title>
+<meta name="description" content="Chefe Meli — comida requintada, serviço à medida.">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:#FFF8EF;color:#2E2118;font-family:'Manrope',Arial,sans-serif;line-height:1.6}
+body{margin:0;background:linear-gradient(180deg,#0B0505 0%,#2A0A0A 32%,#0B0505 62%,#1F0808 100%);background-attachment:fixed;color:#F5EDE6;font-family:'Manrope',Arial,sans-serif;font-weight:300;line-height:1.7}
 a{color:inherit}
 img,video{width:100%;height:auto;display:block}
-h1,h2,h3{font-family:'Gloock',Georgia,serif;font-weight:400;line-height:1.05;margin:0;color:#2E2118}
-h1{font-size:clamp(44px,9vw,84px)}
-h2{font-size:clamp(34px,6vw,56px)}
-h3{font-size:26px}
-p{margin:0 0 14px}
-.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-nav{position:sticky;top:0;z-index:50;background:rgba(255,248,239,.92);backdrop-filter:blur(8px);border-bottom:1px solid #EBDCC8}
-.nav-in{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;max-width:1120px;margin:0 auto}
-.logo{font-family:'Gloock',Georgia,serif;font-size:30px;letter-spacing:.5px;text-decoration:none;color:#B3402A}
-.nav-links{display:flex;gap:18px;font-size:14px;font-weight:600}
-.nav-links a{text-decoration:none}
-.btn{display:inline-block;text-decoration:none;background:#B3402A;color:#FFF8EF!important;padding:15px 28px;border-radius:999px;font-weight:700;font-size:16px;border:none;cursor:pointer}
-.btn:hover{background:#93331F}
-.btn-outline{background:transparent;color:#5A6B3F!important;border:2px solid #5A6B3F}
-.hero{padding:28px 0 8px}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center}
-.eyebrow{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#B3402A;font-weight:700;margin-bottom:14px}
-.hero h1 em{font-family:'Gloock',Georgia,serif;font-style:normal;color:#B3402A}
-.hero p.lead{font-size:19px;color:#5C4A3D;max-width:520px}
-.hero-photo{border-radius:220px 220px 28px 28px;overflow:hidden;box-shadow:0 24px 50px rgba(46,33,24,.18)}
-.hero-photo img{width:100%;height:auto}
-.hero-note{margin-top:16px;font-size:14px;color:#7A6657}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
-.ribbon{margin:28px 0 0;background:#F3E6D3;border-top:1px solid #E5CFAE;border-bottom:1px solid #E5CFAE;padding:18px 0;overflow:hidden}
-.ribbon-track{display:flex;gap:18px;width:max-content;animation:scroll 36s linear infinite}
-.ribbon-track:hover{animation-play-state:paused}
+h1,h2{font-family:'Instrument Serif',Georgia,serif;font-weight:400;line-height:1.1;margin:0}
+h2{font-size:clamp(32px,5vw,48px);font-weight:400}
+p{margin:0 0 14px;color:#E8DCD2}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px;max-width:1100px;margin:0 auto}
+.logo{font-family:'Instrument Serif',Georgia,serif;font-size:26px;text-decoration:none;letter-spacing:1px}
+.nav-cta{font-size:13px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-bottom:1px solid #C1272D;padding-bottom:3px}
+/* Hero: image only, no text */
+.hero{margin:0;padding:0}
+.hero img{width:100%;height:auto;display:block}
+.ribbon{overflow:hidden;padding:28px 0;border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12)}
+.ribbon-track{display:flex;gap:28px;width:max-content;animation:scroll 38s linear infinite}
 @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.dish{width:240px;flex-shrink:0;background:#FFF8EF;border-radius:20px;padding:10px 10px 12px;box-shadow:0 10px 24px rgba(46,33,24,.10)}
-.dish img{border-radius:14px;width:100%;height:auto}
-.dish span{display:block;text-align:center;font-family:'Gloock',Georgia,serif;font-size:20px;margin-top:10px;color:#2E2118}
-section{padding:64px 0}
-.about{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
-.about img{border-radius:28px}
-.kicker{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#5A6B3F;font-weight:700;margin-bottom:12px}
-.work{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:28px}
-.card{background:#fff;border:1px solid #EBDCC8;border-radius:24px;padding:18px}
-.card img{border-radius:16px;margin-bottom:14px}
-.card .num{font-family:'Gloock',Georgia,serif;font-size:36px;color:#B3402A}
-.card h3{margin:6px 0 8px}
-.card p{font-size:15px;color:#5C4A3D}
-.masonry{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
-.masonry figure{margin:0;background:#fff;border:1px solid #EBDCC8;border-radius:20px;padding:10px 10px 12px}
-.masonry img{border-radius:14px}
-.masonry figcaption{text-align:center;font-family:'Gloock',Georgia,serif;font-size:19px;margin-top:10px}
-.video-block{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
-.video-block video{border-radius:24px;box-shadow:0 18px 40px rgba(46,33,24,.16)}
-.bon{display:grid;grid-template-columns:.9fr 1.1fr;gap:32px;align-items:center;background:#F3E6D3;border-radius:32px;padding:28px}
-.bon img{border-radius:24px}
-form{background:#fff;border:1px solid #EBDCC8;border-radius:28px;padding:28px;max-width:720px;margin:28px auto 0}
-label{display:block;font-size:14px;font-weight:700;margin:14px 0 4px}
-input,select,textarea{width:100%;padding:13px 14px;border:1px solid #D9C7A8;border-radius:12px;font-size:16px;font-family:inherit;background:#FFFDF8}
-textarea{min-height:110px}
-#pedido{white-space:pre-wrap;background:#FFF8EF;border:1px solid #EBDCC8;border-radius:14px;padding:16px;margin-top:18px;display:none;font-size:15px}
-footer{border-top:1px solid #EBDCC8;padding:48px 0 28px;text-align:center}
-footer .big{font-family:'Gloock',Georgia,serif;font-size:clamp(40px,8vw,72px);color:#B3402A}
-footer a{text-decoration:none;font-weight:600}
+.ribbon-track figure{margin:0;width:230px;flex-shrink:0}
+.ribbon-track img{border-radius:18px}
+.ribbon-track figcaption{text-align:center;font-family:'Instrument Serif',Georgia,serif;font-size:21px;margin-top:10px;color:#F5EDE6}
+section{padding:72px 0}
+.center{text-align:center}
+.small{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#D98A8A;margin-bottom:14px}
+.about img{border-radius:24px;max-width:520px;margin:0 auto 28px}
+.list{border-top:1px solid rgba(255,255,255,.14)}
+.list div{display:flex;justify-content:space-between;gap:20px;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.list b{font-family:'Instrument Serif',Georgia,serif;font-size:26px;font-weight:400}
+.list span{color:#D8C9BE;text-align:right;max-width:420px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px}
+.grid figure{margin:0}
+.grid img{border-radius:18px}
+.grid figcaption{text-align:center;font-family:'Instrument Serif',Georgia,serif;font-size:20px;margin-top:10px}
+video{border-radius:24px}
+form{max-width:560px;margin:28px auto 0;text-align:left}
+label{display:block;font-size:13px;letter-spacing:1px;text-transform:uppercase;margin:18px 0 6px;color:#D8C9BE}
+input,select,textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.35);color:#F5EDE6;padding:12px 0;font-size:17px;font-family:inherit;outline:none}
+input::placeholder,textarea::placeholder{color:#B9A69A}
+textarea{min-height:90px;resize:vertical}
+.btn{display:inline-block;margin-top:28px;background:#C1272D;color:#fff;text-decoration:none;padding:16px 36px;border-radius:999px;font-weight:600;font-size:16px;border:none;cursor:pointer}
+.btn:hover{background:#A31F24}
+#pedido{white-space:pre-wrap;border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:16px;margin-top:20px;display:none;font-size:15px}
+footer{padding:56px 0 32px;text-align:center;border-top:1px solid rgba(255,255,255,.12)}
+footer .big{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(38px,7vw,64px)}
+footer a{text-decoration:none}
 @media(max-width:809px){
-.nav-links{display:none}
-.hero-grid,.about,.video-block,.bon{grid-template-columns:1fr}
-.hero{padding-top:18px}
-.work{grid-template-columns:1fr 1fr}
-.masonry{grid-template-columns:1fr}
-section{padding:44px 0}
-.dish{width:210px}
+section{padding:52px 0}
+.grid{grid-template-columns:1fr}
+.list div{flex-direction:column}
+.list span{text-align:left}
+.ribbon-track figure{width:200px}
 }
 </style>
 </head>
 <body>
-<nav><div class="nav-in"><a class="logo" href="#inicio">Chefe Meli</a><div class="nav-links"><a href="#sobre">Sobre</a><a href="#trabalho">Trabalho</a><a href="#pratos">Pratos</a><a href="#contratar">Contratar</a></div><a class="btn" href="#contratar">Contratar</a></div></nav>
+<nav><a class="logo" href="#inicio">Chefe Meli</a><a class="nav-cta" href="#contratar">Contratar</a></nav>
 
-<header class="hero wrap" id="inicio"><div class="hero-grid">
-<div>
-<p class="eyebrow">Chefe privada · Em casa · Em eventos</p>
-<h1>Comida que se <em>sente</em> à mesa.</h1>
-<p class="lead">Sou a Meli, a chefe por trás desta mesa. O meu amor pela cozinha cresceu à volta da mesa, em família, e tornou-se o meu trabalho: refeições saudáveis, saborosas e bem apresentadas, para te concentrares no que mais importa.</p>
-<div class="hero-actions"><a class="btn" href="#contratar">Contratar a Chefe Meli</a><a class="btn btn-outline" href="#pratos">Ver os pratos</a></div>
-<p class="hero-note">Em casa, em eventos, em hotéis e restaurantes — com um menu pensado para ti.</p>
-</div>
-<div class="hero-photo"><img src="media/hero-meli.jpg" alt="Chefe Meli, de uniforme branco e braços cruzados"></div>
-</div></header>
+<header class="hero" id="inicio"><img src="media/hero-meli.jpg" alt="Chefe Meli"></header>
 
-<div class="ribbon" aria-label="Pratos em destaque"><div class="ribbon-track">
-<div class="dish"><img src="media/prato-bife-cogumelos.jpg" alt="Bife com cogumelos"><span>Bife com cogumelos</span></div>
-<div class="dish"><img src="media/prato-carne-preto.jpg" alt="Carne em prato preto"><span>Carne em prato preto</span></div>
-<div class="dish"><img src="media/prato-molho.jpg" alt="Prato com molho"><span>Prato com molho</span></div>
-<div class="dish"><img src="media/prato-frito.jpg" alt="Prato frito"><span>Prato frito</span></div>
-<div class="dish"><img src="media/prato-massa.jpg" alt="Massa"><span>Massa</span></div>
-<div class="dish"><img src="media/prato-peixe.jpg" alt="Peixe"><span>Peixe</span></div>
-<div class="dish"><img src="media/prato-bife-cogumelos.jpg" alt="Bife com cogumelos"><span>Bife com cogumelos</span></div>
-<div class="dish"><img src="media/prato-carne-preto.jpg" alt="Carne em prato preto"><span>Carne em prato preto</span></div>
-<div class="dish"><img src="media/prato-molho.jpg" alt="Prato com molho"><span>Prato com molho</span></div>
-<div class="dish"><img src="media/prato-frito.jpg" alt="Prato frito"><span>Prato frito</span></div>
-<div class="dish"><img src="media/prato-massa.jpg" alt="Massa"><span>Massa</span></div>
-<div class="dish"><img src="media/prato-peixe.jpg" alt="Peixe"><span>Peixe</span></div>
+<div class="ribbon"><div class="ribbon-track">
+<figure><img src="media/prato-bife-cogumelos.jpg" alt="Bife com cogumelos"><figcaption>Bife com cogumelos</figcaption></figure>
+<figure><img src="media/prato-carne-preto.jpg" alt="Carne em prato preto"><figcaption>Carne em prato preto</figcaption></figure>
+<figure><img src="media/prato-molho.jpg" alt="Prato com molho"><figcaption>Prato com molho</figcaption></figure>
+<figure><img src="media/prato-frito.jpg" alt="Prato frito"><figcaption>Prato frito</figcaption></figure>
+<figure><img src="media/prato-massa.jpg" alt="Massa"><figcaption>Massa</figcaption></figure>
+<figure><img src="media/prato-peixe.jpg" alt="Peixe"><figcaption>Peixe</figcaption></figure>
+<figure><img src="media/prato-bife-cogumelos.jpg" alt="Bife com cogumelos"><figcaption>Bife com cogumelos</figcaption></figure>
+<figure><img src="media/prato-carne-preto.jpg" alt="Carne em prato preto"><figcaption>Carne em prato preto</figcaption></figure>
+<figure><img src="media/prato-molho.jpg" alt="Prato com molho"><figcaption>Prato com molho</figcaption></figure>
+<figure><img src="media/prato-frito.jpg" alt="Prato frito"><figcaption>Prato frito</figcaption></figure>
+<figure><img src="media/prato-massa.jpg" alt="Massa"><figcaption>Massa</figcaption></figure>
+<figure><img src="media/prato-peixe.jpg" alt="Peixe"><figcaption>Peixe</figcaption></figure>
 </div></div>
 
-<section class="wrap" id="sobre"><div class="about">
-<div><img src="media/meli-flambe.jpg" alt="Chefe Meli a flambar um prato"></div>
-<div><p class="kicker">Sobre a chefe</p><h2>Cada prato conta uma história, do fogão à mesa.</h2><p>Descobre como o amor pela cozinha se tornou uma carreira. A Meli cozinha na tua cozinha, com um menu pensado para ti, para a tua família e para os teus convidados.</p><p>Não há clientes inventados aqui — há trabalho real, pratos reais e uma chefe que gosta de ver a mesa cheia.</p><a class="btn" href="#contratar">Contratar a Chefe Meli</a></div>
+<section class="wrap center"><p class="small">Sobre</p><h2>Comida que se sente à mesa.</h2><p style="margin-top:18px">Sou a Meli. O meu amor pela cozinha cresceu à volta da mesa, em família, e tornou-se o meu trabalho. Refeições saudáveis, saborosas e bem apresentadas — em casa ou no teu evento — para te concentrares no que mais importa.</p><div style="margin-top:28px"><img src="media/meli-flambe.jpg" alt="Chefe Meli a flambar" style="border-radius:24px;max-width:520px;margin:0 auto"></div></section>
+
+<section class="wrap"><p class="small">Trabalho</p><h2>O que faço</h2><div class="list" style="margin-top:24px">
+<div><b>Em casa</b><span>Jantares à medida, na tua cozinha.</span></div>
+<div><b>Eventos</b><span>Festas e celebrações com menu completo.</span></div>
+<div><b>Hotéis e restaurantes</b><span>Serviço profissional em cozinha.</span></div>
+<div><b>Menus à medida</b><span>Um menu para cada ocasião.</span></div>
 </div></section>
 
-<section class="wrap" id="trabalho"><p class="kicker">O trabalho da Meli</p><h2>Quatro maneiras de ter a Meli na tua mesa</h2><div class="work">
-<div class="card"><img src="media/meli-cozinha.jpg" alt="Chefe Meli na cozinha"><div class="num">01</div><h3>Chefe em casa</h3><p>Jantares em casa, à medida, com menu pensado para ti.</p></div>
-<div class="card"><img src="media/meli-empratar.jpg" alt="Chefe Meli a empratar"><div class="num">02</div><h3>Chefe de eventos</h3><p>Festas, celebrações e eventos com menu completo, serviço e apresentação cuidada.</p></div>
-<div class="card"><img src="media/meli-restaurante.jpg" alt="Chefe Meli num restaurante"><div class="num">03</div><h3>Hotéis e restaurantes</h3><p>Serviço profissional em cozinhas de hotéis e restaurantes.</p></div>
-<div class="card"><img src="media/meli-temperar.jpg" alt="Chefe Meli a temperar"><div class="num">04</div><h3>Menus à medida</h3><p>Um menu para cada ocasião, cada gosto e cada mesa.</p></div>
-</div></section>
+<section class="wrap center"><p class="small">Um momento</p><video src="media/video-bife.mp4" autoplay muted loop playsinline preload="metadata"></video></section>
 
-<section class="wrap"><div class="video-block"><div><p class="kicker">Um momento</p><h2>O trabalho no fogo</h2><p>O tempero, o sal e o cuidado no prato — sem pressa, com as mãos na massa.</p></div><video src="media/video-bife.mp4" autoplay muted loop playsinline preload="metadata"></video></div></section>
-
-<section class="wrap" id="pratos"><p class="kicker">Mais pratos em destaque</p><h2>Todos os pratos, bem apresentados, sem cortes</h2><div class="masonry">
+<section class="wrap"><p class="small">Pratos</p><h2>Mais pratos</h2><div class="grid">
 <figure><img src="media/prato-sushi.jpg" alt="Sushi"><figcaption>Sushi</figcaption></figure>
 <figure><img src="media/prato-cordeiro.jpg" alt="Cordeiro"><figcaption>Cordeiro</figcaption></figure>
 <figure><img src="media/prato-salmao.jpg" alt="Salmão"><figcaption>Salmão</figcaption></figure>
@@ -131,27 +101,24 @@ section{padding:44px 0}
 <figure><img src="media/prato-massa-parmesao.jpg" alt="Massa com parmesão"><figcaption>Massa com parmesão</figcaption></figure>
 <figure><img src="media/sobremesa-chocolate.jpg" alt="Sobremesa de chocolate"><figcaption>Sobremesa de chocolate</figcaption></figure>
 <figure><img src="media/bebida-coquetel.jpg" alt="Coquetel"><figcaption>Coquetel</figcaption></figure>
-<figure><img src="media/menu-coquetel.jpg" alt="O menu"><figcaption>O menu</figcaption></figure>
+<figure><img src="media/meli-temperar.jpg" alt="Chefe Meli a temperar"><figcaption>A temperar</figcaption></figure>
 </div></section>
 
-<section class="wrap"><div class="video-block"><video src="media/video-sal.mp4" autoplay muted loop playsinline preload="metadata"></video><div><p class="kicker">Outro momento</p><h2>O sal na hora</h2><p>O sal a cair sobre o bife, com alecrim — tempero na hora, sem pressa.</p></div></div></section>
+<section class="wrap center"><p class="small">Outro momento</p><video src="media/video-sal.mp4" autoplay muted loop playsinline preload="metadata"></video></section>
 
-<section class="wrap"><div class="bon"><img src="media/bon-apetite.jpg" alt="Chefe com faca, bom apetite"><div><p class="kicker">Bom apetite</p><h2>Bon appétit, com a Chefe Meli.</h2><p>A mesa está posta. O resto é saborear.</p></div></div></section>
-
-<section class="wrap" id="contratar"><p class="kicker" style="text-align:center">Como contratar</p><h2 style="text-align:center">Como contratar a Chefe Meli</h2><p style="text-align:center">1. Diz a data e o número de pessoas. 2. Escolhe o tipo de serviço. 3. A Chefe Meli propõe o menu e cozinha para ti.</p>
+<section class="wrap center" id="contratar"><p class="small">Contratar</p><h2>Vamos pôr a mesa?</h2><p>Diz a data, o número de pessoas e o tipo de serviço. A Chefe Meli propõe o menu e cozinha para ti.</p>
 <form id="form-contratar">
 <label>O teu nome<input name="nome" required></label>
 <label>Data<input name="data" type="date"></label>
 <label>Número de pessoas<input name="pessoas" type="number" min="1"></label>
 <label>Tipo de serviço<select name="tipo"><option>Chefe em casa</option><option>Chefe de eventos</option><option>Hotel ou restaurante</option><option>Menu à medida</option></select></label>
 <label>Mensagem<textarea name="mensagem" placeholder="Ex.: jantar em casa, 10 pessoas, com peixe e sobremesa de chocolate"></textarea></label>
-<p><button class="btn" type="submit">Preparar o meu pedido</button></p>
+<p style="text-align:center"><button class="btn" type="submit">Preparar o meu pedido</button></p>
 </form>
 <div id="pedido"></div>
-<p style="text-align:center;margin-top:18px">Preenche o pedido acima e envia-o à Chefe Meli.</p>
 </section>
 
-<footer><div class="wrap"><div class="big">Chefe Meli</div><p>Comida requintada. Serviço à medida.</p><p><a href="#sobre">Sobre</a> · <a href="#trabalho">Trabalho</a> · <a href="#pratos">Pratos</a> · <a href="#contratar">Contratar</a></p></div></footer>
+<footer><div class="wrap"><div class="big">Chefe Meli</div><p style="margin-top:10px"><a href="#contratar">Contratar</a></p></div></footer>
 
 <script>
 document.getElementById('form-contratar').addEventListener('submit',function(e){e.preventDefault();var f=e.target;var t='Pedido para a Chefe Meli\nNome: '+f.nome.value+'\nData: '+f.data.value+'\nPessoas: '+f.pessoas.value+'\nServiço: '+f.tipo.value+'\nMensagem: '+f.mensagem.value;var b=document.getElementById('pedido');b.style.display='block';b.textContent=t;});
