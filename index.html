@@ -137,12 +137,7 @@ box.innerHTML=html}
 function chats(){try{return JSON.parse(localStorage.getItem(KEY+'_chats'))||[]}catch(e){return []}}
 function renderChat(){var area=document.getElementById('chat-area');var a=account();
 if(!a){area.innerHTML='<div class="chatbox"><p>Entra com a tua conta na secção Contratar para conversares com o chefe.</p><p><a class="btn" href="#contratar">Criar conta</a></p></div>';return}
-var list=chats().filter(function(m){return m.email===a.email});
-var html='<div class="chatbox">';if(!list.length)html+='<p>Escreve a tua mensagem. O chefe responde aqui.</p>';
-list.forEach(function(m){html+='<div class="msg"><b>'+(m.from==='admin'?esc(DATA.chef):'Tu')+'</b><p>'+esc(m.text)+'</p></div>'});
-html+='<form id="chat-form"><label>Mensagem<textarea name="ctext" rows="2" required></textarea></label><p style="text-align:center"><button class="btn" type="submit">Enviar mensagem</button></p></form></div>';
-area.innerHTML=html;
-document.getElementById('chat-form').addEventListener('submit',function(e){e.preventDefault();var f=e.target;var all=chats();all.push({email:a.email,name:a.name,from:'client',text:f.ctext.value.trim(),at:Date.now()});localStorage.setItem(KEY+'_chats',JSON.stringify(all));renderChat()})}
+area.innerHTML='<div class="chatbox"><p>A conversa com o chefe é uma página própria, como o WhatsApp.</p><p><a class="btn" href="chat.html">Abrir conversa →</a></p></div>'}
 function updateEstimate(){var sel=document.getElementById('tipo').value;var sv=DATA.services.find(function(s){return s.name===sel});var p=document.querySelector('[name=pessoas]').value;var el=document.getElementById('estimate');
 if(sv&&p&&Number(p)>0){el.textContent='Estimativa: '+fmt(sv.price*Number(p))+' ('+fmt(sv.price)+' por pessoa)';}else if(sv){el.textContent='Preço: '+fmt(sv.price)+' por pessoa';}else{el.textContent=''}}
 document.getElementById('tipo').addEventListener('change',updateEstimate);
