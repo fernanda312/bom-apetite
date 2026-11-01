@@ -191,9 +191,9 @@
 @media (max-width:809px){
   [data-framer-name="Phone"]{position:sticky!important;top:0!important}
 }
-.bom-section{max-width:1100px;margin:0 auto;padding:48px 20px;font-family:Georgia,serif;color:#1c1a17}
-.bom-section h2{font-size:32px;margin:0 0 12px}
-.bom-section p{font-size:18px;max-width:760px}
+.bom-section{max-width:1100px;margin:24px auto;padding:48px 20px;font-family:Georgia,serif;color:#1c1a17;background:#faf7f2;border-radius:16px}
+.bom-section h2{font-size:32px;margin:0 0 12px;color:#1c1a17}
+.bom-section p{font-size:18px;max-width:760px;color:#1c1a17}
 .bom-videos{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
 .bom-videos video{width:100%;height:auto;display:block;border-radius:14px;background:#000}
 @media(max-width:800px){.bom-videos{grid-template-columns:1fr}}
@@ -209,13 +209,24 @@
 [data-framer-name="Testimonial Container"] ul{flex-wrap:wrap!important;gap:16px!important;height:auto!important;width:100%!important}
 [data-framer-name="Testimonial Container"] section{position:static!important;height:auto!important;overflow:visible!important;-webkit-mask-image:none!important;mask-image:none!important;flex-wrap:wrap!important}
 [data-framer-name="Testimonial Container"] div[style*="position:absolute"]{position:static!important;height:auto!important}
+
+/* Mobile / zoom fixes: show full photos, no crop, no zoom */
+img[src="media/hero-meli.jpg"]{object-fit:contain!important;object-position:center top!important;background:#000!important}
+img[src^="media/prato-"],img[src^="media/sobremesa-"],img[src^="media/bebida-"],img[src^="media/menu-"]{object-fit:contain!important;background:#111!important}
+[data-framer-name="Ticker"]{overflow:hidden!important}
+[data-framer-name="Ticker"] img{object-fit:contain!important;background:#111!important}
+@media (max-width:809px){
+  .bom-section{padding:32px 16px;margin:16px}
+  .bom-section h2{font-size:27px}
+  img[src="media/hero-meli.jpg"]{object-fit:contain!important}
+}
 </style>
 <div class="bom-section" id="videos">
 <h2>Vídeos</h2>
 <p>O trabalho da Chefe Meli em vídeo: o tempero, o sal e o cuidado no prato.</p>
 <div class="bom-videos">
-<video src="media/video-bife.mp4" controls muted loop playsinline preload="metadata"></video>
-<video src="media/video-sal.mp4" controls muted loop playsinline preload="metadata"></video>
+<video src="media/video-bife.mp4" autoplay muted loop playsinline preload="metadata" style="width:100%;height:auto;display:block;border-radius:14px;background:#000"></video>
+<video src="media/video-sal.mp4" autoplay muted loop playsinline preload="metadata" style="width:100%;height:auto;display:block;border-radius:14px;background:#000"></video>
 </div>
 </div>
 <div class="bom-section">
@@ -229,7 +240,7 @@
 <div class="bom-section" id="mais-pratos">
 <h2>Mais pratos em destaque</h2>
 <p>Todos os pratos enviados estão em destaque, bem apresentados, sem cortes.</p>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px">
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px;color:#1c1a17">
 <div><img src="media/sobremesa-chocolate.jpg" alt="Sobremesa de chocolate" style="width:100%;height:280px;object-fit:cover;border-radius:14px;display:block"><p>Sobremesa de chocolate</p></div>
 <div><img src="media/prato-massa-parmesao.jpg" alt="Massa com parmesão" style="width:100%;height:280px;object-fit:cover;border-radius:14px;display:block"><p>Massa com parmesão</p></div>
 <div><img src="media/bebida-coquetel.jpg" alt="Coquetel" style="width:100%;height:280px;object-fit:cover;border-radius:14px;display:block"><p>Coquetéis</p></div>
@@ -254,5 +265,31 @@
 </div>
 <script>
 document.getElementById('form-contratar').addEventListener('submit',function(e){e.preventDefault();var f=e.target;var t='Pedido para a Chefe Meli — BOM APETITE\nNome: '+f.nome.value+'\nData: '+f.data.value+'\nPessoas: '+f.pessoas.value+'\nServiço: '+f.tipo.value+'\nMensagem: '+f.mensagem.value;var b=document.getElementById('pedido');b.style.display='block';b.textContent=t;});
+</script>
+
+<script>
+(function(){
+  // Hero: full photo, no crop
+  var hero=document.querySelector('img[src="media/hero-meli.jpg"]');
+  if(hero){
+    var w=hero.parentElement;
+    if(w){w.style.position='relative';w.style.height='auto';w.style.aspectRatio='4 / 5';}
+    hero.style.position='static';hero.style.width='100%';hero.style.height='100%';hero.style.objectFit='contain';
+  }
+  // Ticker: find the row with dish cards inside Ticker and animate it
+  document.querySelectorAll('[data-framer-name="Ticker"]').forEach(function(t){
+    var track=null;
+    t.querySelectorAll('div,ul').forEach(function(el){
+      if(el.children.length>=6 && getComputedStyle(el).display==='flex' && !track){track=el;}
+    });
+    if(track){
+      track.style.width='max-content';
+      track.style.animation='bom-scroll 32s linear infinite';
+      track.style.willChange='transform';
+    }
+  });
+  // Videos: autoplay without player UI
+  document.querySelectorAll('video').forEach(function(v){v.removeAttribute('controls');v.muted=true;v.loop=true;v.playsInline=true;var p=v.play();if(p&&p.catch){p.catch(function(){});}});
+})();
 </script>
 </body></html>
