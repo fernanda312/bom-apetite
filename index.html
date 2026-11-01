@@ -25,14 +25,12 @@ p.lead{max-width:620px;margin:0 auto;font-size:19px;opacity:.92;line-height:1.8}
 .service .snum{font-family:'Instrument Serif',serif;font-style:italic;font-size:26px;color:#E8382E}
 .service b{display:block;font-family:'Italiana',serif;font-size:26px;font-weight:400;letter-spacing:.5px}
 .service span{display:block;opacity:.82;margin:6px 0 4px;font-size:16px}
-.service .simg{width:100%;height:auto;display:block;border-radius:14px;margin-top:12px;grid-column:1/-1}
 .price{font-family:'Instrument Serif',serif;font-style:italic;font-size:26px;color:#F2C9C4}
-.ribbon{overflow:hidden;padding:22px 0 4px}
-.ribbon-track{display:flex;gap:18px;width:max-content;animation:scroll 52s linear infinite}
+.ribbon{overflow-x:auto;padding:22px 0 4px;-webkit-overflow-scrolling:touch}
+.ribbon-track{display:flex;gap:18px;width:max-content}
 .ribbon-track figure{width:300px;margin:0;flex-shrink:0}
 .ribbon-track img{width:100%;height:auto;display:block;border-radius:16px}
 .ribbon-track figcaption{text-align:center;margin-top:10px;font-size:13px;letter-spacing:2px;text-transform:uppercase;opacity:.7}
-@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
 .card img{width:100%;height:auto;display:block;border-radius:16px}
 .card:first-child{grid-column:span 2}
@@ -58,6 +56,7 @@ select option{color:#111}
 .msg{margin:12px 0}
 .msg b{font-size:12px;letter-spacing:2px;text-transform:uppercase;opacity:.6}
 .msg p{margin:2px 0}
+img{max-width:100%}
 footer{border-top:1px solid rgba(255,255,255,.1);padding:56px 22px;text-align:center}
 footer .big{font-family:'Italiana',serif;font-size:52px;letter-spacing:6px;text-transform:uppercase}
 footer a{text-decoration:none;opacity:.8}
@@ -105,7 +104,7 @@ var KEY='bomapetite_v1';
 var DEFAULTS={chef:'Chefe Jerry',city:'Maputo',whatsapp:'',about:'Sou o Jerry. O meu amor pela cozinha cresceu à volta da mesa, em família, e tornou-se o meu trabalho. Refeições saudáveis, saborosas e bem apresentadas — em casa ou no teu evento.',hero:'media/chefe-jerry-sobre.jpg',aboutImg:'media/chefe-jerry-hero.jpg',
 services:[{name:'Chefe em casa',desc:'Jantares à medida, na tua cozinha.',price:3500},{name:'Chefe de eventos',desc:'Festas e celebrações com menu completo.',price:2800},{name:'Hotel ou restaurante',desc:'Serviço profissional em cozinha.',price:15000},{name:'Menu à medida',desc:'Um menu para cada ocasião.',price:4200}],
 dishes:[{name:'Sushi',price:1200,img:'media/prato-sushi.jpg'},{name:'Cordeiro',price:1800,img:'media/prato-cordeiro.jpg'},{name:'Salmão',price:1650,img:'media/prato-salmao.jpg'},{name:'Grelhado',price:1400,img:'media/prato-grelhado.jpg'},{name:'Bife com puré',price:1500,img:'media/prato-bife-pure.jpg'},{name:'Massa com parmesão',price:950,img:'media/prato-massa-parmesao.jpg'},{name:'Sobremesa de chocolate',price:650,img:'media/sobremesa-chocolate.jpg'},{name:'Coquetel',price:800,img:'media/bebida-coquetel.jpg'},{name:'Massa',price:900,img:'media/prato-massa.jpg'}],
-ribbon:[{name:'Bife com cogumelos',img:'media/prato-bife-cogumelos.jpg'},{name:'Carne em prato preto',img:'media/prato-carne-preto.jpg'},{name:'Prato com molho',img:'media/prato-molho.jpg'},{name:'Prato frito',img:'media/prato-frito.jpg'},{name:'Massa',img:'media/prato-massa.jpg'},{name:'Peixe',img:'media/prato-peixe.jpg'}]};
+ribbon:[{name:'Bife com cogumelos',img:'media/prato-bife-cogumelos.jpg'},{name:'Carne em prato preto',img:'media/prato-carne-preto.jpg'},{name:'Prato com molho',img:'media/prato-molho.jpg'},{name:'Prato frito',img:'media/prato-frito.jpg'},{name:'Peixe',img:'media/prato-peixe.jpg'}]};
 function load(){try{var d=JSON.parse(localStorage.getItem(KEY));if(d&&d.chef)return d}catch(e){}try{localStorage.setItem(KEY,JSON.stringify(DEFAULTS))}catch(e){}return JSON.parse(JSON.stringify(DEFAULTS))}
 function save(d){try{localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}}
 var DATA=load();
@@ -118,10 +117,10 @@ document.getElementById('about-text').textContent=DATA.about;
 var hi=document.getElementById('hero-img');if(hi)hi.src=DATA.hero;
 document.getElementById('about-img').src=DATA.aboutImg;
 var s=document.getElementById('services');s.innerHTML='';
-var simgs=['media/prato-bife-pure.jpg','media/prato-grelhado.jpg','media/prato-salmao.jpg','media/prato-massa-parmesao.jpg'];DATA.services.forEach(function(sv,ix){var d=document.createElement('div');d.className='service';d.innerHTML='<span class="snum">0'+(ix+1)+'</span><div><b>'+esc(sv.name)+'</b><span>'+esc(sv.desc)+'</span><span class="price">a partir de '+fmt(sv.price)+'</span><div style="margin-top:14px"><button class="btn btn-small" type="button" data-servico="'+esc(sv.name)+'">Pedir →</button></div></div>';var im=document.createElement('img');im.className='simg';im.src=simgs[ix%simgs.length];im.alt=esc(sv.name);d.appendChild(im);s.appendChild(d)});
+DATA.services.forEach(function(sv,ix){var d=document.createElement('div');d.className='service';d.innerHTML='<span class="snum">0'+(ix+1)+'</span><div><b>'+esc(sv.name)+'</b><span>'+esc(sv.desc)+'</span><span class="price">a partir de '+fmt(sv.price)+'</span><div style="margin-top:14px"><button class="btn btn-small" type="button" data-servico="'+esc(sv.name)+'">Pedir →</button></div></div>';s.appendChild(d)});
 var sel=document.getElementById('tipo');sel.innerHTML='';DATA.services.forEach(function(sv){var o=document.createElement('option');o.textContent=sv.name;sel.appendChild(o)});
 var g=document.getElementById('dishes');g.innerHTML='';DATA.dishes.forEach(function(di){var c=document.createElement('div');c.className='card';c.innerHTML='<img src="'+di.img+'" alt="'+esc(di.name)+'" loading="lazy"><p><span>'+esc(di.name)+'</span><span class="price">'+fmt(di.price)+'</span></p>';g.appendChild(c)});
-var r=document.getElementById('ribbon');var items=DATA.ribbon.concat(DATA.ribbon);r.innerHTML='';items.forEach(function(it){var f=document.createElement('figure');f.innerHTML='<img src="'+it.img+'" alt="'+esc(it.name)+'"><figcaption>'+esc(it.name)+'</figcaption>';r.appendChild(f)});
+var r=document.getElementById('ribbon');var items=DATA.ribbon;r.innerHTML='';items.forEach(function(it){var f=document.createElement('figure');f.innerHTML='<img src="'+it.img+'" alt="'+esc(it.name)+'"><figcaption>'+esc(it.name)+'</figcaption>';r.appendChild(f)});
 document.querySelectorAll('[data-servico]').forEach(function(btn){btn.addEventListener('click',function(){document.getElementById('tipo').value=btn.getAttribute('data-servico');updateEstimate();document.getElementById('contratar').scrollIntoView({behavior:'smooth'});document.querySelector('[name=nome]').focus()})});
 renderAccount();renderOrders();renderChat();
 }
