@@ -105,7 +105,7 @@ var DEFAULTS={chef:'Chefe Jerry',city:'Maputo',whatsapp:'',about:'Sou o Jerry. O
 services:[{name:'Chefe em casa',desc:'Jantares à medida, na tua cozinha.',price:3500},{name:'Chefe de eventos',desc:'Festas e celebrações com menu completo.',price:2800},{name:'Hotel ou restaurante',desc:'Serviço profissional em cozinha.',price:15000},{name:'Menu à medida',desc:'Um menu para cada ocasião.',price:4200}],
 dishes:[{name:'Sushi',price:1200,img:'media/prato-sushi.jpg'},{name:'Cordeiro',price:1800,img:'media/prato-cordeiro.jpg'},{name:'Salmão',price:1650,img:'media/prato-salmao.jpg'},{name:'Grelhado',price:1400,img:'media/prato-grelhado.jpg'},{name:'Bife com puré',price:1500,img:'media/prato-bife-pure.jpg'},{name:'Massa com parmesão',price:950,img:'media/prato-massa-parmesao.jpg'},{name:'Sobremesa de chocolate',price:650,img:'media/sobremesa-chocolate.jpg'},{name:'Coquetel',price:800,img:'media/bebida-coquetel.jpg'},{name:'Massa',price:900,img:'media/prato-massa.jpg'}],
 ribbon:[{name:'Bife com cogumelos',img:'media/prato-bife-cogumelos.jpg'},{name:'Carne em prato preto',img:'media/prato-carne-preto.jpg'},{name:'Prato com molho',img:'media/prato-molho.jpg'},{name:'Prato frito',img:'media/prato-frito.jpg'},{name:'Peixe',img:'media/prato-peixe.jpg'}]};
-function load(){try{var d=JSON.parse(localStorage.getItem(KEY));if(d&&d.chef)return d}catch(e){}try{localStorage.setItem(KEY,JSON.stringify(DEFAULTS))}catch(e){}return JSON.parse(JSON.stringify(DEFAULTS))}
+function load(){try{var d=JSON.parse(localStorage.getItem(KEY));if(d&&d.chef){if(d.ribbon&&d.ribbon.some(function(r){return r.img.indexOf('prato-massa.jpg')>=0})){d.ribbon=JSON.parse(JSON.stringify(DEFAULTS.ribbon));try{localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}}return d}}catch(e){}try{localStorage.setItem(KEY,JSON.stringify(DEFAULTS))}catch(e){}return JSON.parse(JSON.stringify(DEFAULTS))}
 function save(d){try{localStorage.setItem(KEY,JSON.stringify(d))}catch(e){}}
 var DATA=load();
 function fmt(n){return n.toLocaleString('pt-PT')+' MT'}
@@ -129,7 +129,8 @@ function renderAccount(){var a=account();var box=document.getElementById('accoun
 if(a){box.innerHTML='<p>Olá, <b>'+esc(a.name)+'</b> · '+esc(a.email)+' — <button class="btn btn-small btn-ghost" type="button" id="logout">Sair</button></p>';document.getElementById('logout').onclick=function(){localStorage.removeItem(KEY+'_account');renderAccount();renderChat()};var n=document.querySelector('[name=nome]');if(n&&!n.value)n.value=a.name}
 else{box.innerHTML='<p>Para conversares e acompanhares os teus pedidos, cria a tua conta.</p><form id="account-form"><label>O teu nome<input name="anome" required></label><label>Email<input type="email" name="aemail" required></label><p style="text-align:center"><button class="btn" type="submit">Criar conta</button></p></form>';document.getElementById('account-form').addEventListener('submit',function(e){e.preventDefault();var f=e.target;localStorage.setItem(KEY+'_account',JSON.stringify({name:f.anome.value.trim(),email:f.aemail.value.trim()}));renderAccount();renderChat()})}}
 function orders(){try{return JSON.parse(localStorage.getItem(KEY+'_orders'))||[]}catch(e){return []}}
-function renderOrders(){var box=document.getElementById('my-orders');var a=account();var list=orders().filter(function(o){return !a||o.email===a.email});
+function renderOrders(){var box=document.getElementById('my-orders');var a=account();if(!a){box.innerHTML='';return}
+var list=orders().filter(function(o){return o.email===a.email});
 if(!list.length){box.innerHTML='';return}
 var html='<h3 style="font-family:Instrument Serif,serif;font-size:26px">Os meus pedidos</h3>';list.slice().reverse().forEach(function(o){html+='<p><b>'+esc(o.number)+'</b> · '+esc(o.service)+' · '+esc(o.date||'A combinar')+' · '+esc(o.people||'—')+' pessoas · <b>'+esc(o.status)+'</b></p>'});
 box.innerHTML=html}
@@ -162,11 +163,11 @@ var box=document.getElementById('pedido');box.style.display='block';box.textCont
 document.getElementById('pedido-acoes').style.display='flex';renderOrders();
 box.scrollIntoView({behavior:'smooth',block:'center'});
 });
-document.getElementById('btn-copiar').addEventListener('click',function(){var texto=document.getElementById('pedido').textContent;
-if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(texto).then(function(){document.getElementById('pedido-copiado').style.display='block'})}else{var ta=document.createElement('textarea');ta.value=texto;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);document.getElementById('pedido-copiado').style.display='block'}});
+function copyOrder(){var texto=document.getElementById('pedido').textContent;function done(){document.getElementById('pedido-copiado').style.display='block'}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(texto).then(done).catch(function(){fallback()})}else{fallback()}function fallback(){var ta=document.createElement('textarea');ta.value=texto;document.body.appendChild(ta);ta.select();try{document.execCommand('copy')}catch(e){}document.body.removeChild(ta);done()}}
+document.getElementById('btn-copiar').addEventListener('click',copyOrder);
 document.getElementById('btn-whatsapp').addEventListener('click',function(){var texto=document.getElementById('pedido').textContent;
 if(DATA.whatsapp){window.open('https://wa.me/'+DATA.whatsapp.replace(/\D/g,'')+'?text='+encodeURIComponent(texto),'_blank')}
-else{document.getElementById('btn-copiar').click()}});
+else{copyOrder()}});
 document.getElementById('btn-novo').addEventListener('click',function(){form.reset();document.getElementById('pedido').style.display='none';document.getElementById('pedido').textContent='';document.getElementById('pedido-acoes').style.display='none';document.getElementById('pedido-copiado').style.display='none';updateEstimate();form.nome.focus()});
 document.querySelectorAll('video').forEach(function(v){v.removeAttribute('controls');v.muted=true;v.loop=true;v.playsInline=true;var p=v.play();if(p&&p.catch){p.catch(function(){})}});
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12});document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});render();updateEstimate();
