@@ -243,7 +243,7 @@ img[src^="media/prato-"],img[src^="media/sobremesa-"],img[src^="media/bebida-"],
 <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px;color:#1c1a17">
 <div><img src="media/sobremesa-chocolate.jpg" alt="Sobremesa de chocolate" style="width:100%;height:280px;object-fit:cover;border-radius:14px;display:block"><p>Sobremesa de chocolate</p></div>
 <div><img src="media/prato-massa-parmesao.jpg" alt="Massa com parmesão" style="width:100%;height:280px;object-fit:cover;border-radius:14px;display:block"><p>Massa com parmesão</p></div>
-<div><img src="media/bebida-coquetel.jpg" alt="Coquetel" style="width:100%;height:280px;object-fit:cover;border-radius:14px;display:block"><p>Coquetéis</p></div>
+<div><img src="media/bebida-coquetel.jpg" alt="Coquetel" style="width:100%;height:280px;object-fit:cover;border-radius:14px;display:block"><p>Coquetel</p></div>
 <div><img src="media/menu-coquetel.jpg" alt="Menu com coquetel" style="width:100%;height:280px;object-fit:cover;border-radius:14px;display:block"><p>O menu</p></div>
 <div><img src="media/meli-temperar.jpg" alt="Chefe Meli a temperar" style="width:100%;height:280px;object-fit:cover;border-radius:14px;display:block"><p>A Chefe Meli a temperar</p></div>
 <div><img src="media/meli-restaurante.jpg" alt="Chefe Meli num restaurante" style="width:100%;height:280px;object-fit:cover;border-radius:14px;display:block"><p>Chefe Meli no restaurante</p></div>
@@ -261,7 +261,7 @@ img[src^="media/prato-"],img[src^="media/sobremesa-"],img[src^="media/bebida-"],
 <p><button class="bom-btn" type="submit">Preparar o meu pedido</button></p>
 </form>
 <div id="pedido" style="white-space:pre-wrap;background:#fff;border:1px solid #ece4d6;border-radius:12px;padding:16px;margin-top:18px;display:none;font-family:Arial,sans-serif;font-size:15px"></div>
-<p style="font-family:Arial,sans-serif;font-size:15px">Preenche o pedido acima e copia o texto para enviar à Chefe Meli. O contacto direto dela ainda não está neste site — diz-me o número ou o WhatsApp dela e eu coloco o botão direto aqui.</p>
+<p style="font-family:Arial,sans-serif;font-size:15px">Preenche o pedido acima e envia-o à Chefe Meli.</p>
 </div>
 <script>
 document.getElementById('form-contratar').addEventListener('submit',function(e){e.preventDefault();var f=e.target;var t='Pedido para a Chefe Meli — BOM APETITE\nNome: '+f.nome.value+'\nData: '+f.data.value+'\nPessoas: '+f.pessoas.value+'\nServiço: '+f.tipo.value+'\nMensagem: '+f.mensagem.value;var b=document.getElementById('pedido');b.style.display='block';b.textContent=t;});
